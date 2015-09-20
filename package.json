@@ -1,0 +1,13 @@
+{
+  "title": "Rechtschreibung",
+  "name": "rechtschreib",
+  "version": "0.0.1",
+  "description": "Reformierte Rechtschreibung entfernen",
+  "main": "index.js",
+  "author": "Bertram Scharpf <software@bertram-scharpf.de>",
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "license": "BSD"
+}
