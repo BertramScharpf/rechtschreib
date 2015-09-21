@@ -1,0 +1,6 @@
+#
+#  .gitignore  --  Nicht einchecken
+#
+
+@*.xpi
+
