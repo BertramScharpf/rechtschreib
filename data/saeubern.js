@@ -73,10 +73,21 @@ function saeubereElement( elem) {
 }
 
 
-void document.characterSet;
+function findeKodierung() {
+  var cs = document.characterSet;
+  void "Hat scheints keine Relevanz."
+}
 
-var lang = document.documentElement.lang;
 
-if (lang == "" || lang.match( /^de/))
-  saeubereElement( document.body);
+var lang;
+try {
+  lang = document.documentElement.lang;
+}
+catch (err) {
+  lang = "";
+}
+
+if ("undefined" != typeof lang)
+  if (lang == "" || lang.match( /^de/))
+    saeubereElement( document.body);
 
