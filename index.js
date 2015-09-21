@@ -16,7 +16,7 @@ function runScript(tab) {
 
 var buttons = require('sdk/ui/button/action');
 
-var button = buttons.ActionButton({
+var button = buttons.ActionButton( {
   id: "bsch-link",
   label: "Visit Bertram Scharpf",
   icon: {
@@ -27,7 +27,7 @@ var button = buttons.ActionButton({
   onClick: handleClick
 });
 
-function handleClick(state) {
+function handleClick( state) {
   tabs.open( "http://www.bertram-scharpf.de");
 }
 
