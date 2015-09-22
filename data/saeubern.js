@@ -2,6 +2,8 @@
 //  saeubern.js  --  Elemente von reformierter Rechtschreibung säubern
 //
 
+var gender = true;
+
 function saeubereString( s) {
   var r = s;
 
@@ -55,6 +57,10 @@ function saeubereString( s) {
   r = r.replace( /([Dd]ifferen|[Pp]oten)z(?=ial|iell)/g, "$1t");
   r = r.replace( /([Jj]usti)z(?=ia[rb]|iell)/g, "$1t");
   r = r.replace( /(substan|exponen|existen)z(?=iell)/g, "$1t");
+
+  if (gender) {
+    r = r.replace( /([a-zäöüß]+)In(?:n(en))?\b/g, "$1$2");
+  }
 
   return r;
 }
