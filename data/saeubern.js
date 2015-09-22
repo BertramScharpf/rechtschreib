@@ -2,6 +2,8 @@
 //  saeubern.js  --  Elemente von reformierter Rechtschreibung säubern
 //
 
+var gender = true;
+
 function saeubereString( s) {
   var r = s;
 
@@ -56,16 +58,22 @@ function saeubereString( s) {
   r = r.replace( /([Jj]usti)z(?=ia[rb]|iell)/g, "$1t");
   r = r.replace( /(substan|exponen|existen)z(?=iell)/g, "$1t");
 
+  if (gender) {
+    r = r.replace( /([a-zäöüß]+)In(?:n(en))?\b/g, "$1$2");
+  }
+
   return r;
 }
 
 function saeubereElement( elem) {
   if ("undefined" == typeof elem.data) {
-    var i;
-    var children = elem.childNodes;
+    if (elem.localName != "code") {
+      var i;
+      var children = elem.childNodes;
 
-    for (i = 0; i < children.length; ++i) {
-      saeubereElement( children[ i]);
+      for (i = 0; i < children.length; ++i) {
+        saeubereElement( children[ i]);
+      }
     }
   } else {
     elem.data = saeubereString( elem.data);
