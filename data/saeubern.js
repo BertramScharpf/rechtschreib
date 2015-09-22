@@ -61,11 +61,13 @@ function saeubereString( s) {
 
 function saeubereElement( elem) {
   if ("undefined" == typeof elem.data) {
-    var i;
-    var children = elem.childNodes;
+    if (elem.localName != "code") {
+      var i;
+      var children = elem.childNodes;
 
-    for (i = 0; i < children.length; ++i) {
-      saeubereElement( children[ i]);
+      for (i = 0; i < children.length; ++i) {
+        saeubereElement( children[ i]);
+      }
     }
   } else {
     elem.data = saeubereString( elem.data);
