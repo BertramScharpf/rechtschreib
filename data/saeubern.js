@@ -71,6 +71,8 @@ function saeubereString( s) {
 }
 
 function saeubereElement( elem) {
+  if (elem == null)
+    return;
   if ("undefined" == typeof elem.data) {
     if (elem.localName != "code") {
       var i;
@@ -97,7 +99,8 @@ function saeubere() {
 
   if ("undefined" != typeof lang)
     if (lang == "" || lang.match( /^de/)) {
-      saeubereElement( document.body);
+      if ("undefined" != typeof document.body)
+        saeubereElement( document.body);
       if ("undefined" != typeof document.title)
         document.title = saeubereString( document.title);
     }
