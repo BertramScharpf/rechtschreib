@@ -17,7 +17,7 @@ function saeubereString( s) {
   r = r.replace( /([Pp]la)tz(?=ier)/g, "$1z");
   r = r.replace( /([Nn]u)mm(?=erier)/g, "$1m");
   r = r.replace( /([Ss])inf(?=oni)/g, "$1ymph");
-  r = r.replace( /([Aa]l)b(?=tr[aä]um)/g, "$1p");
+  r = r.replace( /([Aa]l)b(?=tr[aä]um|dr[uü]ck)/g, "$1p");
   r = r.replace( /([Ss]elbst)st(?=ändig)/g, "$1");
   r = r.replace( /(Ro|Jä|Zä)h(heit)/g, "$1$2");
   r = r.replace( /\b(rau)(?=(e[mnrs]?)?\b|est|ge|haar|bein)/g, "$1h");
