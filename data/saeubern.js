@@ -85,6 +85,24 @@ function saeubereElement( elem) {
   }
 }
 
+function saeubere() {
+  var lang;
+
+  try {
+    lang = document.documentElement.lang;
+  }
+  catch (err) {
+    lang = "";
+  }
+
+  if ("undefined" != typeof lang)
+    if (lang == "" || lang.match( /^de/)) {
+      saeubereElement( document.body);
+      if ("undefined" != typeof document.title)
+        document.title = saeubereString( document.title);
+    }
+}
+
 
 function findeKodierung() {
   var cs = document.characterSet;
@@ -92,15 +110,5 @@ function findeKodierung() {
 }
 
 
-var lang;
-try {
-  lang = document.documentElement.lang;
-}
-catch (err) {
-  lang = "";
-}
-
-if ("undefined" != typeof lang)
-  if (lang == "" || lang.match( /^de/))
-    saeubereElement( document.body);
+saeubere();
 
