@@ -17,7 +17,7 @@ function saeubereString( s) {
   r = r.replace( /([Pp]la)tz(?=ier)/g, "$1z");
   r = r.replace( /([Nn]u)mm(?=erier)/g, "$1m");
   r = r.replace( /([Ss])inf(?=oni)/g, "$1ymph");
-  r = r.replace( /([Aa]l)b(?=tr[aä]um)/g, "$1p");
+  r = r.replace( /([Aa]l)b(?=tr[aä]um|dr[uü]ck)/g, "$1p");
   r = r.replace( /([Ss]elbst)st(?=ändig)/g, "$1");
   r = r.replace( /(Ro|Jä|Zä)h(heit)/g, "$1$2");
   r = r.replace( /\b(rau)(?=(e[mnrs]?)?\b|est|ge|haar|bein)/g, "$1h");
@@ -71,6 +71,8 @@ function saeubereString( s) {
 }
 
 function saeubereElement( elem) {
+  if (elem == null)
+    return;
   if ("undefined" == typeof elem.data) {
     if (elem.localName != "code") {
       var i;
@@ -97,7 +99,8 @@ function saeubere() {
 
   if ("undefined" != typeof lang)
     if (lang == "" || lang.match( /^de/)) {
-      saeubereElement( document.body);
+      if ("undefined" != typeof document.body)
+        saeubereElement( document.body);
       if ("undefined" != typeof document.title)
         document.title = saeubereString( document.title);
     }
