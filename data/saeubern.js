@@ -85,11 +85,18 @@ function saeubereString( s) {
 
   r = r.replace( /([bdfgklmnprt])\1\1(?=[aeiouyäöü])/g, "$1$1");
   r = r.replace( /sss/g, "ßs");
-  r = r.replace( /\b((?:[ABD-ZÄÖÜabd-zäöüß]|ch|ck)+)ss(t(?:e[rnms])?)?\b/g, "$1ß$2");
-  r = r.replace( /\b(?![AGd]a|de|[DE]i|[Ll]o|[AaBJ]u|[Gg]asse)(..)ss/g, "$1ß");
+  r = r.replace( /((?:^|\s)(?:[AEIOUÄÖÜaeiouäöü]))ss/g, "$1ß");
+  r = r.replace( /((?:^|\s)(?:[BbFfNnPp]a|[Mm][eiü]|[Rr][ou]|[FfGg]u))ss/g, "$1ß");
+  r = r.replace( /((?:^|\s)(?:[ABD-ZÄÖÜabd-zäöüß]|ch|ck)+)ss(t(?:e[rnms])?)?\b/g, "$1ß$2");
+  r = r.replace( /ss(?=[bdfghjklmnqrvwxz]|c(?:[^h]|h(?:en\b|arakt|emi[eks]|irurg)))/g, "ß");
+  r = r.replace( /ssp(?=f|re(?:ch|ng|i)|l[^i])/g, "ßp");
+  r = r.replace( /ss(?=en(?:t|(?:de|lich)|kel|nerg[ie]))/g, "ß");
   r = r.replace( /\b(?!Frä|G[rl]a|I[br]i)(.(?:[fnlprt][aeiouäöüy]))ss/g, "$1ß");
+
+  r = r.replace( /((?:[Ss]ch|[Ff])l?[uo])ss(?!en\b)/g, "$1ß");
   r = r.replace( /(pa)ss(?=w[oö]rt|phrase)/g, "$1ß");
-  r = r.replace( /([Aa]dre)ss(?!en?|at)/g, "$1ß");
+  r = r.replace( /([Aa]dre)ss(?!e|at)/g, "$1ß");
+  r = r.replace( /([Pp]roze)ss(?!e|or)/g, "$1ß");
 
   try {
     r = r.replace( /\bLeid\b/g, function( match) {
