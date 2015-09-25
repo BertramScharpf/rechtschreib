@@ -4,6 +4,33 @@
 
 var gender = true;
 
+function dreiDavorDanach( such, nicht) {
+  var v = RegExp[ "$`"], n = RegExp[ "$'"];
+  var m, i, a = [];
+
+  for (i=0; i<3; i++) {
+    m = v.match( /([a-zäöüß]+)\s+$/);
+    if (!m)
+      break;
+    a.push( m[ 1]);
+    v = RegExp[ "$`"]
+  }
+  for (i=0; i<3; i++) {
+    m = n.match( /^\s+([a-zäöüß]+)/);
+    if (!m)
+      break;
+    a.push( m[ 1]);
+    n = RegExp[ "$'"]
+  }
+  for (i=0; i < a.length; i++) {
+    if (a[i].match( nicht))
+      return false;
+    if (a[i].match( such))
+      return true;
+  }
+  return false;
+}
+
 function saeubereString( s) {
   var r = s;
 
@@ -20,10 +47,9 @@ function saeubereString( s) {
   r = r.replace( /([Aa]l)b(?=tr[aä]um|dr[uü]ck)/g, "$1p");
   r = r.replace( /([Ss]elbst)st(?=ändig)/g, "$1");
   r = r.replace( /(Ro|Jä|Zä)h(heit)/g, "$1$2");
-  r = r.replace( /\b(rau)(?=(e[mnrs]?)?\b|est|ge|haar|bein)/g, "$1h");
+  r = r.replace( /\b(rau)(?=(e[mnrs]?)?\b|est|ge)/g, "$1h");
   r = r.replace( /\b(Rr]au)(?:igkeit)/g, "$1h");
-  r = r.replace( /\b(Rau)\B(?:(?=haar|heit)|(?!h))/g, "$1h");
-  r = r.replace( /\b(Rau)(?=anstalt|b[aä]nk|bauz|bein|eis|en|faser|frost|futter|fuß|haar|hacken|hafer|igkeit|leder|n[aä]cht|nächte|putz|reif|stimm|tiefe|zahn|zylinder)/g, "$1h");
+  r = r.replace( /\b(Rau)(?!heit)(?=anstalt|b[aä]nk|bauz|bein|borst|eis|en|faser|frost|futter|fuß|haar|hacken|hafer|igkeit|leder|n[aä]cht|nächte|putz|reif|stimm|tiefe|zahn|zylinder)/g, "$1h");
   r = r.replace( /([Aa](?:uf|b)rau)(?=en)(?![bckmnpst])/g, "$1h");
   r = r.replace( /(A|(?:Kreuz|Treff|Pik|Grün|Herz|Rot|Karo|Schellen|Trumpf|Flieger)a)ss/g, "$1s");
 
@@ -60,9 +86,25 @@ function saeubereString( s) {
   r = r.replace( /([bdfgklmnprt])\1\1(?=[aeiouyäöü])/g, "$1$1");
   r = r.replace( /sss/g, "ßs");
   r = r.replace( /\b((?:[ABD-ZÄÖÜabd-zäöüß]|ch|ck)+)ss(t(?:e[rnms])?)?\b/g, "$1ß$2");
-  r = r.replace( /\b(?![AGd]a|de|[DE]i|[Ll]o|[AaBJ]u)(..)ss/g, "$1ß");
+  r = r.replace( /\b(?![AGd]a|de|[DE]i|[Ll]o|[AaBJ]u|[Gg]asse)(..)ss/g, "$1ß");
+  r = r.replace( /\b(?!Frä|G[rl]a|I[br]i)(.(?:[fnlprt][aeiouäöüy]))ss/g, "$1ß");
   r = r.replace( /(pa)ss(?=w[oö]rt|phrase)/g, "$1ß");
   r = r.replace( /([Aa]dre)ss(?!en?|at)/g, "$1ß");
+
+  try {
+    r = r.replace( /\bLeid\b/g, function( match) {
+      return dreiDavorDanach( /^tu[tn]$/, null) ? "leid" : "Leid";
+    });
+    r = r.replace( /\bRecht\b/g, function( match) {
+      return dreiDavorDanach( /^(?:ha(?:be|st|t|ben)|beh[aä]lt(?:e|st|t|en|et))$/, /^(k?ein|das)$/) ? "recht" : "Recht";
+    });
+  }
+  catch (err) {
+    // Dann geht's eben nicht.
+  }
+
+  r = r.replace( /([Kk]ennen)\s+(?=(?:ge)?lern)/g, "$1");
+  r = r.replace( /([Ll]eer)\s+(?=steh|gestand)/g, "$1");
 
   if (gender) {
     r = r.replace( /([a-zäöüß]+)In(?:n(en))?\b/g, "$1$2");

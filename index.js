@@ -7,7 +7,7 @@ var self = require('sdk/self');
 
 var aktiv = true;
 var options = {
-    gender: false
+    gender: true
 };
 
 
