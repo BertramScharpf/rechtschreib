@@ -112,6 +112,8 @@ function findeKodierung() {
   void "Hat scheints keine Relevanz."
 }
 
-
-saeubere();
+self.port.on( "saeubereDokument", function( options) {
+  gender = options.gender;
+  saeubere();
+});
 
