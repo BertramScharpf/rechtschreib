@@ -36,15 +36,24 @@ inactive_icons = {
 
 var buttons = require('sdk/ui/button/action');
 
+
+var buttonLabel = "Rechtschreibung säubern";
 var button = buttons.ActionButton( {
     id: "rechtschreibung",
-    label: "Rechtschreibung säubern",
+    label: buttonLabel,
     icon: normal_icons,
     onClick: handleClick
 });
 
 function handleClick( state) {
+    var l = buttonLabel;
+
     aktiv = !aktiv;
-    button.state( "window", { icon: aktiv ? normal_icons : inactive_icons});
+    if (!aktiv)
+        l += " (inaktiv)";
+    button.state( "window", {
+        icon: aktiv ? normal_icons : inactive_icons,
+        label: l
+    });
 }
 
