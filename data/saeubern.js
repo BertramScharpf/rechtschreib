@@ -60,7 +60,8 @@ function saeubereString( s) {
   r = r.replace( /([bdfgklmnprt])\1\1(?=[aeiouyäöü])/g, "$1$1");
   r = r.replace( /sss/g, "ßs");
   r = r.replace( /\b((?:[ABD-ZÄÖÜabd-zäöüß]|ch|ck)+)ss(t(?:e[rnms])?)?\b/g, "$1ß$2");
-  r = r.replace( /([Pp]a)ss(?=w[oö]rt|phrase)/g, "$1ß");
+  r = r.replace( /\b(?![AGd]a|de|[DE]i|[Ll]o|[AaBJ]u)(..)ss/g, "$1ß");
+  r = r.replace( /(pa)ss(?=w[oö]rt|phrase)/g, "$1ß");
   r = r.replace( /([Aa]dre)ss(?!en?|at)/g, "$1ß");
 
   if (gender) {
