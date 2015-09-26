@@ -37,6 +37,7 @@ function saeubereString( s) {
     r = r.replace( /([Ii]m +)F(?=olgenden)/g, "$1f");
     r = r.replace( /([Ii]m +)A(?=llgemeinen)/g, "$1a");
     r = r.replace( /([Dd]es +)W(?=eiteren)/g, "$1w");
+    r = r.replace( /([Ii]m +)W(?=esentlichen)/g, "$1w");
     r = r.replace( /([Dd]es +)Ö(?=fteren)/g, "$1ö");
     r = r.replace( /([Zz]u +)H(?=öherem)/g, "$1h");
     r = r.replace( /([Ss]eit +)L(?=angem|ängerem)/g, "$1l");
@@ -85,14 +86,14 @@ function saeubereString( s) {
 
     r = r.replace( /([bdfgklmnprt])\1\1(?=[aeiouyäöü])/g, "$1$1");
     r = r.replace( /sss/g, "ßs");
-    r = r.replace( /((?:^|\s)(?:[AEIOUÄÖÜaeiouäöü]))ss/g, "$1ß");
+    r = r.replace( /((?:^|\s)(?:[AEIOUÄÖÜaeiouäöü]))ss[^aeiouäöü]/g, "$1ß");
     r = r.replace( /((?:^|\s)(?:[BbFfNnPp]a|[Mm][eiü]|[Rr][ou]|[FfGg]u))ss(?!e[lmnrst]?\b|ung|ist|isch|ion)/g, "$1ß");
+    r = r.replace( /((?:^|\s)(?!Frä|G[rl]a|I[br]i)[A-Za-zäöüÄÖÜ](?:[fnlprt][aeiouäöüy]))ss(?!e[lmnrst]?\b|ung|ist|isch|ion)/g, "$1ß");
     r = r.replace( /((?:^|\s)(?:[ABD-ZÄÖÜabd-zäöüß]|ch|ck)+)ss(t(?:e[rnms])?)?\b/g, "$1ß$2");
     r = r.replace( /([a-zäöü])ss(?=[bdfghjklmnqrvwxz]\w*[aeiouyäöü]|c(?:[^h]|h(?:en\b|arakt|emi[eks]|irurg)))/g, "$1ß");
     r = r.replace( /ssp(?=f|re(?:ch|ng|i)|l[^i])/g, "ßp");
-    r = r.replace( /(^|\s)(?!Frä|G[rl]a|I[br]i)([A-Za-zäöüÄÖÜ](?:[fnlprt][aeiouäöüy]))ss/g, "$1$2ß");
 
-    r = r.replace( /((?:[Ss]ch|[Ff])l?[uo])ss(?!e[lmnrst]\b)/g, "$1ß");
+    r = r.replace( /((?:[Ss]ch|[Ff])l?[uo])ss(?!e[lmnrst]?)/g, "$1ß");
     r = r.replace( /(pa)ss(?=w[oö]rt|phrase)/g, "$1ß");
     r = r.replace( /([Aa]dre)ss(?!e|at)/g, "$1ß");
     r = r.replace( /([Pp]roze)ss(?!e|or)/g, "$1ß");
