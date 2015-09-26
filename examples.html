@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang= "de">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+<meta http-equiv="Content-Type" content="text/html; charset=ISO8859-15">
+-->
+
+<script>
+var gender = true;
+function dreiDavorDanach( such, nicht) {
+    var v = RegExp[ "$`"], n = RegExp[ "$'"];
+    var m, i, a = [];
+
+    for (i=0; i<3; i++) {
+        m = v.match( /([a-zäöüß]+)\s+$/);
+        if (!m)
+            break;
+        a.push( m[ 1]);
+        v = RegExp[ "$`"]
+    }
+    for (i=0; i<3; i++) {
+        m = n.match( /^\s+([a-zäöüß]+)/);
+        if (!m)
+            break;
+        a.push( m[ 1]);
+        n = RegExp[ "$'"]
+    }
+    for (i=0; i < a.length; i++) {
+        if (a[i].match( nicht))
+            return false;
+        if (a[i].match( such))
+            return true;
+    }
+    return false;
+}
+function saeubereString( s) {
+    var r = s;
+
+    r = r.replace( /([Ii]m +)F(?=olgenden)/g, "$1f");
+    r = r.replace( /([Ii]m +)A(?=llgemeinen)/g, "$1a");
+    r = r.replace( /([Dd]es +)W(?=eiteren)/g, "$1w");
+    r = r.replace( /([Ii]m +)W(?=esentlichen)/g, "$1w");
+    r = r.replace( /([Dd]es +)Ö(?=fteren)/g, "$1ö");
+    r = r.replace( /([Zz]u +)H(?=öherem)/g, "$1h");
+    r = r.replace( /([Ss]eit +)L(?=angem|ängerem)/g, "$1l");
+
+    r = r.replace( /([Pp]la)tz(?=ier)/g, "$1z");
+    r = r.replace( /([Nn]u)mm(?=erier)/g, "$1m");
+    r = r.replace( /([Ss])inf(?=oni)/g, "$1ymph");
+    r = r.replace( /([Aa]l)b(?=tr[aä]um|dr[uü]ck)/g, "$1p");
+    r = r.replace( /([Ss]elbst)st(?=ändig)/g, "$1");
+    r = r.replace( /(Ro|Jä|Zä)h(heit)/g, "$1$2");
+    r = r.replace( /\b(rau)(?=(e[mnrs]?)?\b|est|ge)/g, "$1h");
+    r = r.replace( /\b(Rr]au)(?:igkeit)/g, "$1h");
+    r = r.replace( /\b(Rau)(?!heit)(?=anstalt|b[aä]nk|bauz|bein|borst|eis|en|faser|frost|futter|fuß|haar|hacken|hafer|igkeit|leder|n[aä]cht|nächte|putz|reif|stimm|tiefe|zahn|zylinder)/g, "$1h");
+    r = r.replace( /([Aa](?:uf|b)rau)(?=en)(?![bckmnpst])/g, "$1h");
+    r = r.replace( /(A|(?:Kreuz|Treff|Pik|Grün|Herz|Rot|Karo|Schellen|Trumpf|Flieger)a)ss/g, "$1s");
+
+    r = r.replace( /(ufw)ä(?=ndig)/g, "$1e");
+    r = r.replace( /(chw)ä(?=nglich)/g, "$1e");
+    r = r.replace( /([Ss]t)ä(?=ngel)/g, "$1e");
+    r = r.replace( /\b(beh)ä(?=nde)/g, "$1e");
+    r = r.replace( /([Gg])ä(?=ms)/g, "$1e");
+    r = r.replace( /([Gg]r)ä(?=uel)/g, "$1e");
+    r = r.replace( /([Bb])ä(?=ndel)/g, "$1e");
+    r = r.replace( /([Bb]el)ä(?=mmer)/g, "$1e");
+    r = r.replace( /([Qq]u)ä(?=ntchen)/g, "$1e");
+    r = r.replace( /([Ee]inbl)ä(?=u)/g, "$1e");
+    r = r.replace( /([Ss]chn)ä(?=uz)/g, "$1e");
+
+    r = r.replace( /([Pp]ant)(?=er)/g, "$1h");
+    r = r.replace( /([Kk]änguru)\b/g, "$1h");
+    r = r.replace( /([Dd]el)f(?=in)/g, "$1ph");
+
+    r = r.replace( /([Tt]i|[Mm]o|[Ss]t[eo])pp\b/g, "$1p");
+    r = r.replace( /([Ss]tu)ck(?=ateur)/g, "$1kk");
+    r = r.replace( /([Ss]pag)(?=etti)/g, "$1h");
+    r = r.replace( /([Jj]og)(?=urt)/g, "$1h");
+    r = r.replace( /([Rr]ally)\b/g, "$1e");
+    r = r.replace( /([Tt]ol)l(?=patsch)/g, "$1");
+    r = r.replace( /([Zz]ier)r(?=at)/g, "$1");
+
+    r = r.replace( /([Pp]aragra)f/g, "$1ph");
+
+    r = r.replace( /([Dd]ifferen|[Pp]oten)z(?=ial|iell)/g, "$1t");
+    r = r.replace( /([Jj]usti)z(?=ia[rb]|iell)/g, "$1t");
+    r = r.replace( /(substan|exponen|existen)z(?=iell)/g, "$1t");
+
+    r = r.replace( /([bdfgklmnprt])\1\1(?=[aeiouyäöü])/g, "$1$1");
+    r = r.replace( /sss/g, "ßs");
+    r = r.replace( /((?:^|\s)(?:[AEIOUÄÖÜaeiouäöü]))ss(?![aeiouäöü])/g, "$1ß");
+    r = r.replace( /((?:^|\s)(?:[BbFfNnPp]a|[Mm][eiü]|[Rr][ou]|[FfGg]u))ss(?!e[lmnrst]?\b|ung|ist|isch|ion)/g, "$1ß");
+    r = r.replace( /((?:^|\s)(?!Frä|G[rl]a|I[br]i)[A-Za-zäöüÄÖÜ](?:[fnlprt][aeiouäöüy]))ss(?!e[lmnrst]?\b|ung|ist|isch|ion|il)/g, "$1ß");
+    r = r.replace( /((?:^|\s)(?:[ABD-ZÄÖÜabd-zäöüß]|ch|ck)+)ss(t(?:e[rnms])?)?\b/g, "$1ß$2");
+    r = r.replace( /([a-zäöü])ss(?=[bdfghjklmnqrvwxz]\w*[aeiouyäöü]|c(?:[^h]|h(?:en\b|arakt|emi[eks]|irurg)))/g, "$1ß");
+    r = r.replace( /ssp(?=f|re(?:ch|ng|i)|l[^i])/g, "ßp");
+
+    r = r.replace( /((?:[Ss]ch|[Ff])l?[uo])ss(?!e[lmnrst]?|il)/g, "$1ß");
+    r = r.replace( /(pa)ss(?=w[oö]rt|phrase)/g, "$1ß");
+    r = r.replace( /([Aa]dre)ss(?!e|at)/g, "$1ß");
+    r = r.replace( /([Pp]roze)ss(?!e|or)/g, "$1ß");
+    r = r.replace( /ss(?=en(?:dlich|erg[ie]))/g, "ß");
+
+    try {
+        r = r.replace( /\bLeid\b/g, function( match) {
+            return dreiDavorDanach( /^tu[tn]$/, null) ? "leid" : "Leid";
+        });
+        r = r.replace( /\bRecht\b/g, function( match) {
+            return dreiDavorDanach( /^(?:ha(?:be|st|t|ben)|beh[aä]lt(?:e|st|t|en|et))$/, /^(k?ein|das)$/) ? "recht" : "Recht";
+        });
+    }
+    catch (err) {
+        // Dann geht's eben nicht.
+    }
+
+    r = r.replace( /([Kk]ennen)\s+(?=(?:ge)?lern)/g, "$1");
+    r = r.replace( /([Ll]eer)\s+(?=steh|gestand)/g, "$1");
+    r = r.replace( /([Mm]eist)\s+(?=gelesen)/g, "$1");
+    r = r.replace( /([Ww]ieder)\s+(?=beleb)/g, "$1");
+    r = r.replace( /([Ww]eiter)\s+(?=(?:ge)?reich)/g, "$1");
+    r = r.replace( /([Ll]ieb)\s+(?=gew[io]nn)/g, "$1");
+
+    if (gender) {
+        r = r.replace( /([a-zäöüß]+)In(?:n(en))?\b/g, "$1$2");
+    }
+
+    return r;
+}
+function saeubereElement( elem) {
+    if (elem == null)
+        return;
+    if ("undefined" == typeof elem.data) {
+        if (elem.localName != "code") {
+            var i;
+            var children = elem.childNodes;
+
+            for (i = 0; i < children.length; ++i) {
+                saeubereElement( children[ i]);
+            }
+        }
+    } else {
+        elem.data = saeubereString( elem.data);
+    }
+}
+function saeubern() {
+    var lang = document.documentElement.lang;
+    void document.characterSet;
+    if (lang == "" || lang.match( /^de/)) {
+        document.getElementById( "muessen").innerHTML = "Nein! Wir können auch anders.";
+        saeubereElement( document.body);
+    }
+}
+function endecode_versuch() {
+    var t = document.getElementById( "data").innerHTML;
+    var d = document.getElementById( "debug");
+    d.innerHTML = t;
+    // d.innerHTML += "\n" + unescape( "%e4");
+    // d.innerHTML += "\n" + escape( "äöü");
+    // d.innerHTML += "\n" + decodeURI( t);
+    d.innerHTML += "\n" + encodeURI( t);
+    d.innerHTML += "\n" + encodeURI( t).replace( /%C3%A4/, "AE");
+    // d.innerHTML += "\n" + decodeURI( t).replace( /ä/, "AE");
+    d.innerHTML += "\n---";
+}
+</script>
+</head>
+<body>
+
+<h1 id="muessen">M&uuml;ssen wir uns das bieten lassen?</h1>
+
+<ul>
+<li>
+Fossil
+</li>
+<li>Nussschale</li>
+<li>Platzierung deplatziert</li>
+<li>Selbstständigkeit selbstständig</li>
+<li>Scrollleisten</li>
+<li>dass muss</li>
+<li>missachten Essgeschirr Esstisch</li>
+<li>Passwort Passwörter Passphrase</li>
+<li>bewusst bewusster bewusstem bewusstes</li>
+<li>Adresse Adressen Adressangabe Adressat Prozess Prozesse Prozessor</li>
+<li>im Folgenden, im Allgemeinen, des Weiteren, des Öfteren, seit Langem, seit Längerem, zu Höherem</li>
+<li>Albtraum</li>
+<li>Nummerierung nummerieren</li>
+<li>Sinfonie sinfonisch</li>
+<li>rau raue rauer rauen rauem raues Rauheit Rauhaardackel Raufaser aufrauen Rauigkeit</li>
+<li>Rohheit Jähheit Zähheit</li>
+<li>aufwändig &uuml;berschw&auml;nglich behände Stängel Gämse Gräuel Bändel</li>
+<li>Panter Känguru Delfin</li>
+<li>Tipp Stopp Mopp Stepp</li>
+<li>Stuckateur Stuckateure</li>
+<li>Spagetti Jogurt Rally Zierrat</li>
+<li>belämmert Quäntchen einbläuen</li>
+<li>Tollpatsch Tollpatsche Tollpatschigkeit tollpatschigsten</li>
+<li>schnäuzen geschnäuzt Nasenschnäuzen</li>
+<li>Differenzial Differenzialdiagnose Potenzial potenziell potenzielle potenzieller</li>
+<li>Justiziar Justiziare justiziabel Justiziabilität justizielle justiziell</li>
+<li>substanziell exponenziell existenziell</li>
+<li>Ass</li>
+<li>Missverständnis sesshaft blassblau Fressgasse Flusspferd Presswurst
+    Massen Gefässchirurg Fässchen unfassbar niederlassen Dossier Aussage</li>
+<li>kennen lernen, kennen gelernt, leer stehen, leer gestanden, meist gelesen,
+    wieder belebt, weiter reichen, weiter gereicht, lieb gewinnt, lieb gewonnen</li>
+<li>tut mir Leid, dass ich Recht habe</li>
+<li>css access</li>
+<li>ArchitektIn ArchitektInnen</li>
+</ul>
+
+<button type="button" onclick="saeubern()">S&auml;ubern!</button>
+
+<hr />
+<pre id="data">tr&auml;nen&uuml;berstr&ouml;mt</pre>
+<hr />
+<pre id="debug"></pre>
+<hr />
+
+</body>
+
+<!--
+
+-->
+
+
+</html>
