@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang= "de">
+<html lang= "en"><!-- en, damit die automatische Ersetzung deaktiviert wird.-->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!--
@@ -91,10 +91,10 @@ function saeubereString( s) {
 
     r = r.replace( /ss(?=­)/, "ß");
     r = r.replace( /sss/g, "ßs");
-    r = r.replace( /((?:^|\s)(?:[AEIOUÄÖÜaeiouäöü]))ss(?![aeiouäöü])/g, "$1ß");
-    r = r.replace( /((?:^|\s)(?:[BbFfNnPp]a|[Mm][eiü]|[Rr][ou]|[FfGg]u))ss(?![aeiouäöüy])/g, "$1ß");
-    r = r.replace( /((?:^|\s)(?!Frä|G[rl]a|I[br]i)[A-Za-zäöüÄÖÜ](?:[fnlprt][aeiouäöüy]))ss(?![aeiouäöüy])/g, "$1ß");
-    r = r.replace( /((?:^|\s)(?:[ABD-ZÄÖÜabd-zäöüß]|ch|ck)+)ss(t(?:e[rnms])?)?\b/g, "$1ß$2");
+    r = r.replace( /((?:^|\W)(?:[AEIOUÄÖÜaeiouäöü]))ss(?![aeiouäöü])/g, "$1ß");
+    r = r.replace( /((?:^|\W)(?:[BbFfNnPp]a|[Mm][eiü]|[Rr][ou]|[FfGg]u))ss(?![aeiouäöüy])/g, "$1ß");
+    r = r.replace( /((?:^|\W)(?!Frä|G[rl]a|I[br]i)[A-Za-zäöüÄÖÜ](?:[fnlprt][aeiouäöüy]))ss(?![aeiouäöüy])/g, "$1ß");
+    r = r.replace( /((?:^|\W)(?:[ABD-ZÄÖÜabd-zäöüß]|ch|ck)+)ss(t(?:e[rnms]?)?)?\b(?!\S*\w)/g, "$1ß$2");
     r = r.replace( /([a-zäöü])ss(?=[bdfghjklmnqrvwxz]\w*[aeiouyäöü]|c(?:[^h]|h(?:en\b|arakt|emi[eks]|irurg)))/g, "$1ß");
     r = r.replace( /ssp(?=f|re(?:ch|ng|i)|l[^i])/g, "ßp");
 
@@ -142,6 +142,9 @@ function saeubereElement( elem) {
                 saeubereElement( children[ i]);
             }
         }
+        var t = elem.getAttribute( "title");
+        if (t)
+            elem.setAttribute( "title", saeubereString( t));
     } else {
         elem.data = saeubereString( elem.data);
     }
@@ -149,7 +152,7 @@ function saeubereElement( elem) {
 function saeubern() {
     var lang = document.documentElement.lang;
     void document.characterSet;
-    if (lang == "" || lang.match( /^de/)) {
+    if (lang == "" || lang.match( /^de/) || true) {
         document.getElementById( "muessen").innerHTML = "Nein! Wir können auch anders.";
         saeubereElement( document.body);
     }
@@ -175,14 +178,14 @@ function endecode_versuch() {
 <ul>
 <li>
 </li>
-<li>Nussschale</li>
+<li><a title="Nussschale">Nussschale</a></li>
 <li>Platzierung deplatziert</li>
 <li>Selbstständigkeit selbstständig</li>
 <li>Scrollleisten</li>
 <li>dass muss</li>
 <li>missachten Essgeschirr Esstisch</li>
 <li>Passwort Passwörter Passphrase</li>
-<li>bewusst bewusster bewusstem bewusstes</li>
+<li>bewusst bewusste bewusster bewusstem bewusstes</li>
 <li>Adresse Adressen Adressangabe Adressat Prozess Prozesse Prozessor</li>
 <li>im Folgenden, im Allgemeinen, des Weiteren, des Öfteren, seit Langem, seit Längerem, zu Höherem</li>
 <li>Albtraum</li>

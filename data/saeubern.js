@@ -140,6 +140,9 @@ function saeubereElement( elem) {
                 saeubereElement( children[ i]);
             }
         }
+        var t = elem.getAttribute( "title");
+        if (t)
+            elem.setAttribute( "title", saeubereString( t));
     } else {
         elem.data = saeubereString( elem.data);
     }
