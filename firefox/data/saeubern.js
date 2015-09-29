@@ -3,7 +3,7 @@
 //
 
 var gender = true;
-
+var schweiz = true;
 function dreiDavorDanach( such, nicht) {
     var v = RegExp[ "$`"], n = RegExp[ "$'"];
     var m, i, a = [];
@@ -87,7 +87,7 @@ function saeubereString( s) {
     r = r.replace( /([bdfgklmnprt])\1\1(?=[aeiouyäöü])/g, "$1$1");
 
     r = r.replace( /ss(?=­)/, "ß");
-    r = r.replace( /sss/g, "ßs");
+    r = r.replace( /ss(t)?s/g, "ß$1s");
     r = r.replace( /((?:^|\W)(?:[AEIOUÄÖÜaeiouäöü]))ss(?![aeiouäöü])/g, "$1ß");
     r = r.replace( /((?:^|\W)(?:[BbFfNnPp]a|[Mm][eiü]|[Rr][ou]|[FfGg]u))ss(?![aeiouäöüy])/g, "$1ß");
     r = r.replace( /((?:^|\W)(?!Frä|G[rl]a|I[br]i)[A-Za-zäöüÄÖÜ](?:[fnlprt][aeiouäöüy]))ss(?![aeiouäöüy])/g, "$1ß");
@@ -120,6 +120,10 @@ function saeubereString( s) {
     r = r.replace( /([Ww]ieder)\s+(?=beleb)/g, "$1");
     r = r.replace( /([Ww]eiter)\s+(?=(?:ge)?reich)/g, "$1");
     r = r.replace( /([Ll]ieb)\s+(?=gew[io]nn)/g, "$1");
+
+    if (schweiz) {
+        r = r.replace( /((?:^|\W)(?:ver)?(?:[aAäÄ]u|[Gg]r[oö]))ss(?=\b|e)/g, "$1ß");
+    }
 
     if (gender) {
         r = r.replace( /([a-zäöüß]+)In(?:n(en))?\b/g, "$1$2");

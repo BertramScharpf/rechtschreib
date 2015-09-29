@@ -5,6 +5,8 @@ orthography from web contents. As this is a concern only for
 readers of German texts, the rest of the documentation will
 be written in German.
 
+# Deutsche Dokumentation
+
 Dieses Modul entfernt die sogenannte „reformierte“
 Rechtschreibung von jeder aufgerufenen Netzseite.
 
@@ -32,9 +34,9 @@ umgebaut. Viel Spaß!
 Wenn das Modul zuviel des Guten getan haben sollte oder wenn
 Sie aus anderen Gründen auf die eigentlichen, unveränderten
 Seiteninhalte zugreifen möchten, klicken Sie auf das grüne
-Eszet. Dann wird es grau, und die Seiten bleiben wie sie
-sind. Durch einen weiteren Klick auf das Eszet wird es
-wieder aktiv.
+Eszet. Dann wird es grau, und die Seiten werden bleiben, wie
+sie sind. Durch einen weiteren Klick auf das Eszet wird das
+Module wieder aktiv.
 
 ## Schwachstellen
 
