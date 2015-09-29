@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RDF
+  xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+    <Description about="urn:mozilla:install-manifest">
+      <em:id>rechtschreib@bertram-scharpf.de</em:id>
+      <em:type>2</em:type>
+      <em:bootstrap>true</em:bootstrap>
+      <em:unpack>false</em:unpack>
+      <em:version>0.1.0</em:version>
+      <em:name>Rechtschreib</em:name>
+      <em:description>Turn German content into traditional orthography</em:description>
+      <em:creator>Bertram Scharpf &lt;software@bertram-scharpf.de&gt;</em:creator>
+
+      <!-- Firefox -->
+      <em:targetApplication>
+        <Description>
+          <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+          <em:minVersion>38.0a1</em:minVersion>
+          <em:maxVersion>39.0</em:maxVersion>
+        </Description>
+      </em:targetApplication>
+
+      <em:targetApplication>
+        <Description>
+          <em:id>{aa3c5121-dab2-40e2-81ca-7ea25febc110}</em:id>
+          <em:minVersion>38.0a1</em:minVersion>
+          <em:maxVersion>39.0</em:maxVersion>
+        </Description>
+      </em:targetApplication>
+
+<!--
+    <em:homepageURL>http://www.bertram-scharpf.de</em:homepageURL>
+-->
+
+    <em:localized>
+      <Description>
+        <em:locale>de</em:locale>
+        <em:name>Rechtschreib</em:name>
+        <em:description>Seiteninhalte von reformierter Rechtschreibung säubern</em:description>
+      </Description>
+    </em:localized>
+  </Description>
+</RDF>

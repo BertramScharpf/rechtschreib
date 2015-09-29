@@ -1,8 +1,8 @@
 {
-  "title": "Rechtschreibung",
+  "title": "Rechtschreib",
   "name": "rechtschreib",
   "version": "0.1.0",
-  "description": "Reformierte Rechtschreibung entfernen",
+  "description": "Turn German content into traditional orthography",
   "main": "index.js",
   "author": "Bertram Scharpf <software@bertram-scharpf.de>",
   "engines": {

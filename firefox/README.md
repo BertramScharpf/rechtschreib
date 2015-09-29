@@ -36,7 +36,7 @@ Sie aus anderen Gründen auf die eigentlichen, unveränderten
 Seiteninhalte zugreifen möchten, klicken Sie auf das grüne
 Eszet. Dann wird es grau, und die Seiten werden bleiben, wie
 sie sind. Durch einen weiteren Klick auf das Eszet wird das
-Module wieder aktiv.
+Modul wieder aktiv.
 
 ## Schwachstellen
 
