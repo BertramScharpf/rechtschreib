@@ -1,8 +1,9 @@
 {
   "title": "Rechtschreib",
-  "name": "rechtschreib",
+  "name": "rechtschreib-bs",
   "version": "0.1.0",
   "description": "Turn German content into traditional orthography",
+  "icon": "resource://rechtschreib-bs/data/gruen-32.png",
   "main": "index.js",
   "author": "Bertram Scharpf <software@bertram-scharpf.de>",
   "engines": {

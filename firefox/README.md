@@ -1,4 +1,4 @@
-# Rechtschreibung
+# Rechtschreib
 
 This tool removes the ugly so-called „reformed“ German
 orthography from web contents. As this is a concern only for
@@ -13,7 +13,7 @@ Rechtschreibung von jeder aufgerufenen Netzseite.
 Wenn Sie ein wenig Sprachgefühl haben, sind Sie vermutlich
 den Widerwillen immer noch nicht losgeworden, der einen
 überkommt angesichts der Torheiten der reformierten
-Rechtschreibung. Nun, daß Menschen, die auf automatische
+Rechtschreibung. Daß inzwischen Menschen, die auf automatische
 Rechtschreibprüfung angewiesen sind, sich haben umstellen
 lassen, ist kaum mehr zu ändern. Was Sie aber tun können
 ist: Sie können sich den schaurigen Anblick ersparen.

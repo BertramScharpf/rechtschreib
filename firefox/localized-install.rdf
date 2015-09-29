@@ -3,7 +3,7 @@
   xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   xmlns:em="http://www.mozilla.org/2004/em-rdf#">
     <Description about="urn:mozilla:install-manifest">
-      <em:id>rechtschreib@bertram-scharpf.de</em:id>
+      <em:id>@rechtschreib-bs</em:id>
       <em:type>2</em:type>
       <em:bootstrap>true</em:bootstrap>
       <em:unpack>false</em:unpack>
@@ -11,6 +11,7 @@
       <em:name>Rechtschreib</em:name>
       <em:description>Turn German content into traditional orthography</em:description>
       <em:creator>Bertram Scharpf &lt;software@bertram-scharpf.de&gt;</em:creator>
+      <em:iconURL>resource://rechtschreib-bs/data/gruen-32.png</em:iconURL>
 
       <!-- Firefox -->
       <em:targetApplication>
