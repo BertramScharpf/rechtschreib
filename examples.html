@@ -74,7 +74,7 @@ function saeubereString( s) {
     r = r.replace( /([Kk]änguru)\b/g, "$1h");
     r = r.replace( /([Dd]el)f(?=in)/g, "$1ph");
 
-    r = r.replace( /([Tt]i|[Mm]o|[Ss]t[eo])pp\b/g, "$1p");
+    r = r.replace( /([Tt]i|[Mm]o|[Ss]t[eo])pp(?=s?\b)/g, "$1p");
     r = r.replace( /([Ss]tu)ck(?=ateur)/g, "$1kk");
     r = r.replace( /([Ss]pag)(?=etti)/g, "$1h");
     r = r.replace( /([Jj]og)(?=urt)/g, "$1h");
@@ -186,6 +186,7 @@ function endecode_versuch() {
 <li>
 Landessprecher
 Anfangsszene
+Suchtipps
 </li>
 <li><a title="Nussschale">Nussschale</a> Bewusstsein</li>
 <li>Platzierung deplatziert</li>
