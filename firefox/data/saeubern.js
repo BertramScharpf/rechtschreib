@@ -124,7 +124,7 @@ function saeubereString( s) {
     r = r.replace( /([Ll]ieb)\s+(?=gew[io]nn)/g, "$1");
 
     if (schweiz) {
-        r = r.replace( /((?:^|\W)(?:ver)?(?:[aAäÄ]u|[Gg]r[oö]))ss(?=\b|e)/g, "$1ß");
+        r = r.replace( /((?:^|\W)(?:ver)?(?:[aAäÄ]u|[Gg]r[oö]))ss(?=e(?:\b|r|n(?!d)))/g, "$1ß");
     }
 
     if (gender) {
