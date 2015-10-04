@@ -77,6 +77,7 @@ function saeubereString( s) {
     r = r.replace( /([Rr]ally)\b/g, "$1e");
     r = r.replace( /([Tt]ol)l(?=patsch)/g, "$1");
     r = r.replace( /([Zz]ier)r(?=at)/g, "$1");
+    r = r.replace( /([Pp]ort)monee/g, "$1emonnaie");
 
     r = r.replace( /([Pp]aragra)f/g, "$1ph");
 
