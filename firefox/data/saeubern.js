@@ -117,12 +117,12 @@ function saeubereString( s) {
         // Dann geht's eben nicht.
     }
 
-    r = r.replace( /([Kk]ennen)\s+(?=(?:ge)?lern)/g, "$1");
-    r = r.replace( /([Ll]eer)\s+(?=steh|gestand)/g, "$1");
-    r = r.replace( /([Mm]eist)\s+(?=gelesen)/g, "$1");
-    r = r.replace( /([Ww]ieder)\s+(?=beleb)/g, "$1");
-    r = r.replace( /([Ww]eiter)\s+(?=(?:ge)?reich)/g, "$1");
-    r = r.replace( /([Ll]ieb)\s+(?=gew[io]nn)/g, "$1");
+    r = r.replace( /([Kk]ennen)\s+(?=(?:ge)?lern)/g, "$1­");
+    r = r.replace( /([Ll]eer)\s+(?=steh|gestand)/g, "$1­");
+    r = r.replace( /([Mm]eist)\s+(?=gelesen)/g, "$1­");
+    r = r.replace( /([Ww]ieder)\s+(?=beleb)/g, "$1­");
+    r = r.replace( /([Ww]eiter)\s+(?=(?:ge)?reich)/g, "$1­");
+    r = r.replace( /([Ll]ieb)\s+(?=gew[io]nn)/g, "$1­");
 
     if (schweiz) {
         r = r.replace( /((?:^|\W)(?:ver)?(?:[aAäÄ]u|[Gg]r[oö]))ss(?=e(?:\b|r|n(?!d)))/g, "$1ß");
