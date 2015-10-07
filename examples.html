@@ -56,7 +56,7 @@ function saeubereString( s) {
     r = r.replace( /\b(Rr]au)(?:igkeit)/g, "$1h");
     r = r.replace( /\b(Rau)(?!heit)(?=anstalt|b[aä]nk|bauz|bein|borst|eis|en|faser|frost|futter|fuß|haar|hacken|hafer|igkeit|leder|n[aä]cht|nächte|putz|reif|stimm|tiefe|zahn|zylinder)/g, "$1h");
     r = r.replace( /([Aa](?:uf|b)rau)(?=en)(?![bckmnpst])/g, "$1h");
-    r = r.replace( /(A|(?:Kreuz|Treff|Pik|Grün|Herz|Rot|Karo|Schellen|Trumpf|Flieger)a)ss/g, "$1s");
+    r = r.replace( /(A|(?:Kreuz|Treff|Pik|Grün|Herz|Rot|Karo|Schellen|Trumpf|Flieger)a)ss\b/g, "$1s");
 
     r = r.replace( /(ufw)ä(?=ndig)/g, "$1e");
     r = r.replace( /(chw)ä(?=nglich)/g, "$1e");
@@ -102,7 +102,7 @@ function saeubereString( s) {
     r = r.replace( /ssp(?=f|re(?!ch|ng|i)|l[^i])/g, "ßp");
 
     r = r.replace( /([Mm]i)ss(?=ach|trau|ern|erfolg|t[oö]n)/g, "$1ß");
-    r = r.replace( /((?:[Ss]ch|[Ff])l?[uo])ss(?!e[lmnrst]?|i[gl])/g, "$1ß");
+    r = r.replace( /((?:[Ss]ch|[Ff])l?[uo])ss(?!e[lmnrst]?|i[gl]|ung)/g, "$1ß");
     r = r.replace( /(pa)ss(?=w[oö]rt|phrase)/g, "$1ß");
     r = r.replace( /([Aa]dre)ss(?!e|at)/g, "$1ß");
     r = r.replace( /([Pp]roze|[Kk]ongre)ss(?!e|or|ion|ier)/g, "$1ß");
@@ -188,6 +188,8 @@ function endecode_versuch() {
 Aussehen
 Portmonee
 Portmonees
+Beeinflussung
+Association
 </li>
 <li><a title="Nussschale">Nussschale</a> Bewusstsein</li>
 <li>Platzierung deplatziert</li>
