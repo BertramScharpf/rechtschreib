@@ -100,6 +100,7 @@ function saeubereString( s) {
 
     r = r.replace( /([Mm]i)ss(?=ach|trau|ern|erfolg|t[oö]n)/g, "$1ß");
     r = r.replace( /((?:[Ss]ch|[Ff])l?[uo])ss(?!e[lmnrst]?|i[gl]|ung)/g, "$1ß");
+    r = r.replace( /([Ss]pro)ss/g, "$1ß");
     r = r.replace( /(pa)ss(?=w[oö]rt|phrase)/g, "$1ß");
     r = r.replace( /([Aa]dre)ss(?!e|at)/g, "$1ß");
     r = r.replace( /([Pp]roze|[Kk]ongre)ss(?!e|or|ion|ier)/g, "$1ß");
