@@ -22,12 +22,12 @@ function runScript(tab) {
 }
 
 
-normal_icons = {
+var normal_icons = {
     "16": "./gruen-16.png",
     "32": "./gruen-32.png",
     "64": "./gruen-64.png"
 };
-inactive_icons = {
+var inactive_icons = {
     "16": "./grau-16.png",
     "32": "./grau-32.png",
     "64": "./grau-64.png"

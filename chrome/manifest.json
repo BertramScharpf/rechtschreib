@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+  "name": "Rechtschreib",
+  "version": "0.1.2",
+  "description": "Turn German content into traditional orthography",
+  "author": "Bertram Scharpf <software@bertram-scharpf.de>",
+  "homepage_url": "https://github.com/BertramScharpf/rechtschreib",
+  "icons": {
+    "16":  "images/gruen-16.png",
+    "32":  "images/gruen-32.png",
+    "48":  "images/gruen-48.png",
+    "128": "images/gruen-128.png"
+  },
+  "browser_action": {
+    "name": "Rechtschreib",
+    "default_icons": {
+      "19":  "images/gruen-19.png",
+      "38":  "images/gruen-38.png"
+    },
+    "default_title": "Rechtschreib"
+  },
+  "background": {
+    "scripts": [ "background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": [ "*://*/*"],
+      "js": [ "saeubern.js"]
+    }
+  ]
+}

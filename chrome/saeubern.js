@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang= "en"><!-- en, damit die automatische Ersetzung deaktiviert wird.-->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!--
-<meta http-equiv="Content-Type" content="text/html; charset=ISO8859-15">
--->
-
-<script>
+//
+//  saeubern.js  --  Elemente von reformierter Rechtschreibung säubern
+//
 
 var gender = true;
 var schweiz = true;
@@ -164,93 +158,29 @@ function saeubereElement( elem) {
     }
 }
 
-function saeubern() {
-    var lang = document.documentElement.lang;
-    void document.characterSet;
-    if (lang == "" || lang.match( /^de/) || true) {
-        document.getElementById( "muessen").innerHTML = "Nein! Wir können auch anders.";
-        saeubereElement( document.body);
+function saeubere() {
+    var lang;
+
+    try {
+        lang = document.documentElement.lang;
     }
+    catch (err) {
+        lang = "";
+    }
+
+    if ("undefined" != typeof lang)
+        if (lang == "" || lang.match( /^de/)) {
+            if ("undefined" != typeof document.body)
+                saeubereElement( document.body);
+            if ("undefined" != typeof document.title)
+                document.title = saeubereString( document.title);
+        }
 }
 
-function endecode_versuch() {
-    var t = document.getElementById( "data").innerHTML;
-    var d = document.getElementById( "debug");
-    d.innerHTML = t;
-    // d.innerHTML += "\n" + unescape( "%e4");
-    // d.innerHTML += "\n" + escape( "äöü");
-    // d.innerHTML += "\n" + decodeURI( t);
-    d.innerHTML += "\n" + encodeURI( t);
-    d.innerHTML += "\n" + encodeURI( t).replace( /%C3%A4/, "AE");
-    // d.innerHTML += "\n" + decodeURI( t).replace( /ä/, "AE");
-    d.innerHTML += "\n---";
-}
-
-</script>
-</head>
-<body>
-
-<h1 id="muessen">M&uuml;ssen wir uns das bieten lassen?</h1>
-
-<ul>
-<li>
-Aussehen
-Portmonee
-Portmonees
-Beeinflussung
-Association
-im Übrigen
-Sprossachse
-</li>
-<li><a title="Nussschale">Nussschale</a> Bewusstsein</li>
-<li>Platzierung deplatziert</li>
-<li>Selbstständigkeit selbstständig</li>
-<li>Scrollleisten</li>
-<li>dass muss</li>
-<li>missachten Essgeschirr Esstisch</li>
-<li>Passwort Passwörter Passphrase</li>
-<li>bewusst bewusste bewusster bewusstem bewusstes</li>
-<li>Adresse Adressen Adressangabe Adressat Prozess Prozesse Prozessor</li>
-<li>im Folgenden, im Allgemeinen, des Weiteren, des Öfteren, seit Langem, seit Längerem, zu Höherem</li>
-<li>Albtraum</li>
-<li>Nummerierung nummerieren</li>
-<li>Sinfonie sinfonisch</li>
-<li>rau raue rauer rauen rauem raues Rauheit Rauhaardackel Raufaser aufrauen Rauigkeit</li>
-<li>Rohheit Jähheit Zähheit</li>
-<li>aufwändig &uuml;berschw&auml;nglich behände Stängel Gämse Gräuel Bändel</li>
-<li>Panter Känguru Delfin</li>
-<li>Tipp Stopp Mopp Stepp</li>
-<li>Stuckateur Stuckateure</li>
-<li>Spagetti Jogurt Rally Zierrat</li>
-<li>belämmert Quäntchen einbläuen</li>
-<li>Tollpatsch Tollpatsche Tollpatschigkeit tollpatschigsten</li>
-<li>schnäuzen geschnäuzt Nasenschnäuzen</li>
-<li>Differenzial Differenzialdiagnose Potenzial potenziell potenzielle potenzieller</li>
-<li>Justiziar Justiziare justiziabel Justiziabilität justizielle justiziell</li>
-<li>substanziell exponenziell existenziell</li>
-<li>Ass</li>
-<li>Missverständnis sesshaft blassblau Fressgasse Flusspferd Presswurst
-    Massen Gefässchirurg Fässchen unfassbar niederlassen Dossier Aussage</li>
-<li>kennen lernen, kennen gelernt, leer stehen, leer gestanden, meist gelesen,
-    wieder belebt, weiter reichen, weiter gereicht, lieb gewinnt, lieb gewonnen</li>
-<li>tut mir Leid, dass ich Recht habe</li>
-<li>css access</li>
-<li>ArchitektIn ArchitektInnen</li>
-</ul>
-
-<button type="button" onclick="saeubern()">S&auml;ubern!</button>
-
-<hr />
-<pre id="data">tr&auml;nen&uuml;berstr&ouml;mt</pre>
-<hr />
-<pre id="debug"></pre>
-<hr />
-
-</body>
-
-<!--
-
--->
+chrome.extension.sendRequest( {	'action' : 'is_active'},
+    function( response) {
+        saeubere();
+    }
+);
 
 
-</html>

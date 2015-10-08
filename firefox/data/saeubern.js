@@ -4,6 +4,7 @@
 
 var gender = true;
 var schweiz = true;
+
 function dreiDavorDanach( such, nicht) {
     var v = RegExp[ "$`"], n = RegExp[ "$'"];
     var m, i, a = [];
