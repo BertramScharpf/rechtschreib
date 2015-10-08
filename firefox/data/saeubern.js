@@ -36,6 +36,7 @@ function saeubereString( s) {
 
     r = r.replace( /([Ii]m +)F(?=olgenden)/g, "$1f");
     r = r.replace( /([Ii]m +)A(?=llgemeinen)/g, "$1a");
+    r = r.replace( /([Ii]m +)Ü(?=brigen)/g, "$1ü");
     r = r.replace( /([Dd]es +)W(?=eiteren)/g, "$1w");
     r = r.replace( /([Ii]m +)W(?=esentlichen)/g, "$1w");
     r = r.replace( /([Dd]es +)Ö(?=fteren)/g, "$1ö");
