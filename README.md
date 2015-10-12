@@ -18,12 +18,16 @@ Rechtschreibprüfung angewiesen sind, sich haben umstellen
 lassen, ist kaum mehr zu ändern. Was Sie aber tun können
 ist: Sie können sich den schaurigen Anblick ersparen.
 
-Dieses Firefox-Addon beseitigt auf den von Ihnen
-aufgerufenen Seiten die gröbsten Impertinenzen.
+Diese Erweiterung für Ihren Netzleser beseitigt auf den von
+Ihnen aufgerufenen Seiten die gröbsten Impertinenzen.
 
 ## Installation und Betrieb
 
-Installieren Sie einfach dieses Addon.
+Wenn Sie Firefox benutzen, installieren Sie das Addon von der
+Mozilla-Seite <https://addons.mozilla.org/de/firefox/addon/rechtschreib/>.
+
+Wenn Sie Chrome benutzen, installieren Sie die Extension von der
+Seite <>.
 
 Auf der Adreßleiste entsteht ein neues Symbol, ein grünes
 Eszet. Ab jetzt werden die von Ihnen aufgerufenen Seiten
