@@ -2,7 +2,7 @@
 //  background.js  --  Switch active state
 //
 
-var active = false;
+var active = true;
 
 var normal_icons = {
     "19":  "images/gruen-19.png",
