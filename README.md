@@ -52,7 +52,10 @@ Das System wird niemals perfekt sein. Viel Text muß
 gesichtet werden und Einzelfälle laufend eingepflegt werden.
 Deshalb freue ich mich über Rückmeldungen zu falschen
 Ersetzungen immer. Schreiben Sie an
-<software@bertram-scharpf.de>.
+<software@bertram-scharpf.de>. Vergewissern Sie sich vorher,
+ob der von Ihnen entdeckte Fehler nicht bereits bekannt ist.
+Die bekannten Fehler finden Sie hier:
+<https://github.com/BertramScharpf/rechtschreib/blob/master/bekannte_fehler>.
 
 Schwierig wird es besonders mit Eigennamen und mit
 fremdsprachlichen Einsprengseln, zum Beispiel

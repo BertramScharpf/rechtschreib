@@ -37,7 +37,7 @@ function saeubereString( s) {
     r = r.replace( /([Ii]m +)F(?=olgenden)/g, "$1f");
     r = r.replace( /([Ii]m +)A(?=llgemeinen)/g, "$1a");
     r = r.replace( /([Ii]m +)Ü(?=brigen)/g, "$1ü");
-    r = r.replace( /([Dd]es +)W(?=eiteren)/g, "$1w");
+    r = r.replace( /(\b(?:[Dd]es|[Aa]uf) +)W(?=eitere)/g, "$1w");
     r = r.replace( /([Ii]m +)W(?=esentlichen)/g, "$1w");
     r = r.replace( /([Dd]es +)Ö(?=fteren)/g, "$1ö");
     r = r.replace( /([Zz]u +)H(?=öherem)/g, "$1h");
@@ -125,6 +125,7 @@ function saeubereString( s) {
     r = r.replace( /([Ww]ieder)\s+(?=beleb)/g, "$1­");
     r = r.replace( /([Ww]eiter)\s+(?=(?:ge)?reich)/g, "$1­");
     r = r.replace( /([Ll]ieb)\s+(?=gew[io]nn)/g, "$1­");
+    r = r.replace( /([Ss]elbst)\s+(?=ernannt)/g, "$1­");
 
     if (schweiz) {
         r = r.replace( /((?:^|\W)(?:ver)?(?:[aAäÄ]u|[Gg]r[oö]))ss(?=e(?:\b|r|n(?!d)))/g, "$1ß");
