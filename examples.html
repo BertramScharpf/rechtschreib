@@ -132,6 +132,7 @@ function saeubereString( s) {
     r = r.replace( /([Ww]ieder)\s+(?=beleb)/g, "$1­");
     r = r.replace( /([Ww]eiter)\s+(?=(?:ge)?reich)/g, "$1­");
     r = r.replace( /([Ll]ieb)\s+(?=gew[io]nn)/g, "$1­");
+    r = r.replace( /([Ss]elbst)\s+(?=ernannt)/g, "$1­");
 
     if (schweiz) {
         r = r.replace( /((?:^|\W)(?:ver)?(?:[aAäÄ]u|[Gg]r[oö]))ss(?=e(?:\b|r|n(?!d)))/g, "$1ß");
@@ -204,6 +205,8 @@ Association
 im Übrigen
 Sprossachse
 auf Weiteres
+Assembler
+selbst ernannt
 </li>
 <li><a title="Nussschale">Nussschale</a> Bewusstsein</li>
 <li>Platzierung deplatziert</li>
