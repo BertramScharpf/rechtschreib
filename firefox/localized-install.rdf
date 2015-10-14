@@ -7,11 +7,12 @@
       <em:type>2</em:type>
       <em:bootstrap>true</em:bootstrap>
       <em:unpack>false</em:unpack>
-      <em:version>0.1.1</em:version>
+      <em:version>0.1.2</em:version>
       <em:name>Rechtschreib</em:name>
       <em:description>Turn German content into traditional orthography</em:description>
       <em:creator>Bertram Scharpf &lt;software@bertram-scharpf.de&gt;</em:creator>
       <em:iconURL>resource://rechtschreib-bs/data/gruen-32.png</em:iconURL>
+      <em:homepageURL>https://github.com/BertramScharpf/rechtschreib</em:homepageURL>
 
       <!-- Firefox -->
       <em:targetApplication>
@@ -29,7 +30,8 @@
           <em:maxVersion>39.0</em:maxVersion>
         </Description>
       </em:targetApplication>
-    <em:homepageURL>https://github.com/BertramScharpf/rechtschreib</em:homepageURL>
+
+
     <em:localized>
       <Description>
         <em:locale>de</em:locale>

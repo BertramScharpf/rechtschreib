@@ -95,7 +95,8 @@ function saeubereString( s) {
     r = r.replace( /((?:^|\W)(?:[BbFfNnPp]a|[Mm][eiü]|[Rr][ou]|[FfGg]u))ss(?![aeiouäöüy])/g, "$1ß");
     r = r.replace( /((?:^|\W)(?!Frä|G[rl]a|I[br]i)[A-Za-zäöüÄÖÜ](?:[fnlprt][aeiouäöüy]))ss(?![aeiouäöüy])/g, "$1ß");
     r = r.replace( /((?:^|\W)(?:[ABD-ZÄÖÜabd-zäöüß]|ch|ck)+)ss(t(?:e[rnms]?)?)?\b(?!\S*\w)/g, "$1ß$2");
-    r = r.replace( /([a-zäöü])ss(?=[bdfghjklmnqrvwx]\w*[aeiouyäöü]\w|c(?:[^h]|h(?:en\b|arakt|emi[eks]|irurg)))/g, "$1ß");
+    r = r.replace( /([a-zäöü])ss(?=[bdfghjlmnqrvwx]\w*[aeiouyäöü]\w|c(?:[^h]|h(?:en\b|arakt|emi[eks]|irurg)))/g, "$1ß");
+    r = r.replace( /([a-zäöü])ss(?=k(?!al[ae]|anda|izz|lav|ont[oi]|ript))/g, "$1ß");
     r = r.replace( /([a-zäöü])ss(?=z(?!ene))/g, "$1ß");
     r = r.replace( /ssp(?=f|re(?!ch|ng|i)|l[^i])/g, "ßp");
 
@@ -159,23 +160,33 @@ function saeubereElement( elem) {
     }
 }
 
-function saeubere() {
+function deutscheSeite() {
     var lang;
+    var html = document.documentElement;
 
-    try {
-        lang = document.documentElement.lang;
-    }
-    catch (err) {
-        lang = "";
-    }
+    if ("undefined" == typeof html)
+        return false;
 
-    if ("undefined" != typeof lang)
-        if (lang == "" || lang.match( /^de/)) {
-            if ("undefined" != typeof document.body)
-                saeubereElement( document.body);
-            if ("undefined" != typeof document.title)
-                document.title = saeubereString( document.title);
-        }
+    lang = html.lang;
+    if (!lang || lang == "")
+        lang = html.getAttribute( 'xml:lang');
+    if (!lang || lang == "") {
+        if (document.location.hostname.match( /\.(?:de|at|ch|li)$/))
+            return true;
+    } else {
+        if (lang.match( /^de/))
+            return true;
+    }
+    return false;
+}
+
+function saeubere() {
+    if (deutscheSeite()) {
+        if ("undefined" != typeof document.body)
+            saeubereElement( document.body);
+        if ("undefined" != typeof document.title)
+            document.title = saeubereString( document.title);
+    }
 }
 
 
