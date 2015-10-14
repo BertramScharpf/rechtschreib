@@ -158,23 +158,33 @@ function saeubereElement( elem) {
     }
 }
 
-function saeubere() {
+function deutscheSeite() {
     var lang;
+    var html = document.documentElement;
 
-    try {
-        lang = document.documentElement.lang;
-    }
-    catch (err) {
-        lang = "";
-    }
+    if ("undefined" == typeof html)
+        return false;
 
-    if ("undefined" != typeof lang)
-        if (lang == "" || lang.match( /^de/)) {
-            if ("undefined" != typeof document.body)
-                saeubereElement( document.body);
-            if ("undefined" != typeof document.title)
-                document.title = saeubereString( document.title);
-        }
+    lang = html.lang;
+    if (!lang || lang == "")
+        lang = html.getAttribute( 'xml:lang');
+    if (!lang || lang == "") {
+        if (document.location.hostname.match( /\.(?:de|at|ch|li)$/))
+            return true;
+    } else {
+        if (lang.match( /^de/))
+            return true;
+    }
+    return false;
+}
+
+function saeubere() {
+    if (deutscheSeite()) {
+        if ("undefined" != typeof document.body)
+            saeubereElement( document.body);
+        if ("undefined" != typeof document.title)
+            document.title = saeubereString( document.title);
+    }
 }
 
 
