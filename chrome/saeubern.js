@@ -140,6 +140,12 @@ function saeubereString( s) {
     return r;
 }
 
+function saeubereAttribut( elem, attr) {
+    var t = elem.getAttribute( attr);
+    if (t)
+        elem.setAttribute( attr, saeubereString( t));
+}
+
 function saeubereElement( elem) {
     if (elem == null)
         return;
@@ -152,9 +158,8 @@ function saeubereElement( elem) {
                 saeubereElement( children[ i]);
             }
         }
-        var t = elem.getAttribute( "title");
-        if (t)
-            elem.setAttribute( "title", saeubereString( t));
+        saeubereAttribut( elem, "title");
+        saeubereAttribut( elem, "placeholder");
     } else {
         elem.data = saeubereString( elem.data);
     }
