@@ -108,6 +108,7 @@ function saeubereString( s) {
     r = r.replace( /([Pp]roze|[Kk]ongre)ss(?!e|or|ion|ier)/g, "$1ß");
     r = r.replace( /ss(?=en(?:dlich|erg[ie]))/g, "ß");
     r = r.replace( /([Gg]u)ss(?=eiser?n)/g, "$1ß");
+    r = r.replace( /([Bb]iogra)f/g, "$1ph");
 
     try {
         r = r.replace( /\bLeid\b/g, function( match) {
