@@ -165,6 +165,29 @@ function saeubereElement( elem) {
     }
 }
 
+
+var umlautTiefe;
+
+function findeUmlaut( elem) {
+    if (elem == null)
+        return false;
+    if ("undefined" != typeof elem.data) {
+        if (elem.data.match( /[äöüßÄÖÜ]/))
+            return true;
+        umlautTiefe--;
+    } else {
+        var children = elem.childNodes;
+        if ("undefined" != typeof children) {
+            var i;
+            for (i = 0; i < children.length && umlautTiefe > 0; ++i) {
+                if (findeUmlaut( children[ i]))
+                    return true;
+            }
+        }
+    }
+    return false;
+}
+
 function deutscheSeite() {
     var lang;
     var html = document.documentElement;
@@ -177,6 +200,9 @@ function deutscheSeite() {
         lang = html.getAttribute( 'xml:lang');
     if (!lang || lang == "") {
         if (document.location.hostname.match( /\.(?:de|at|ch|li)$/))
+            return true;
+        umlautTiefe = 15;
+        if (findeUmlaut( document.body))
             return true;
     } else {
         if (lang.match( /^de/))
