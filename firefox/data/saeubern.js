@@ -69,7 +69,7 @@ function saeubereString( s) {
 
     r = r.replace( /([Pp]ant)(?=er)/g, "$1h");
     r = r.replace( /([Kk]änguru)\b/g, "$1h");
-    r = r.replace( /([Dd]el)f(?=in)/g, "$1ph");
+    r = r.replace( /([Dd]el)f(?=in(?![gk]e[rnlms]\b))/g, "$1ph");
 
     r = r.replace( /([Tt]i|[Mm]o|[Ss]t[eo])pp(?=s?\b)/g, "$1p");
     r = r.replace( /([Ss]tu)ck(?=ateur)/g, "$1kk");
