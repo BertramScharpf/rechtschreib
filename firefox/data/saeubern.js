@@ -128,13 +128,14 @@ function saeubereString( s) {
     r = r.replace( /([Ww]eiter)\s+(?=(?:ge)?reich)/g, "$1­");
     r = r.replace( /([Ll]ieb)\s+(?=gew[io]nn)/g, "$1­");
     r = r.replace( /([Ss]elbst)\s+(?=ernannt)/g, "$1­");
+    r = r.replace( /([Hh]erbei)\s+(?=(?:ge)?(?:wünsch|sehn))/g, "$1­");
 
     if (schweiz) {
         r = r.replace( /((?:^|\W)(?:ver)?(?:[aAäÄ]u|[Gg]r[oö]))ss(?=e(?:\b|r|n(?!d)))/g, "$1ß");
     }
 
     if (gender) {
-        r = r.replace( /([a-zäöüß]+)In(?:n(en))?\b/g, "$1$2");
+        r = r.replace( /([a-zäöüß]+)In(?:n(en))?/g, "$1$2");
     }
 
     return r;
