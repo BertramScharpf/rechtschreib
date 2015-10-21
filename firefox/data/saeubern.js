@@ -170,12 +170,14 @@ function saeubereElement( elem) {
 var umlautTiefe;
 
 function findeUmlaut( elem) {
+    var data;
     if (elem == null)
         return false;
-    if ("undefined" != typeof elem.data) {
-        if (elem.data.match( /[äöüßÄÖÜ]/))
+    data = elem.data;
+    if ("undefined" != typeof data) {
+        if (data.match( /[äöüßÄÖÜ]/))
             return true;
-        umlautTiefe--;
+        umlautTiefe -= data.length;
     } else {
         var children = elem.childNodes;
         if ("undefined" != typeof children) {
@@ -202,7 +204,7 @@ function deutscheSeite() {
     if (!lang || lang == "") {
         if (document.location.hostname.match( /\.(?:de|at|ch|li)$/))
             return true;
-        umlautTiefe = 15;
+        umlautTiefe = 300;
         if (findeUmlaut( document.body))
             return true;
     } else {
