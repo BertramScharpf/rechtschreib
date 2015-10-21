@@ -94,7 +94,7 @@ function saeubereString( s) {
     r = r.replace( /((?:^|\W)(?:[AEIOUYÄÖÜaeiouyäöü]))ss(?![aeiouyäöü])/g, "$1ß");
     r = r.replace( /((?:^|\W)(?:[BbFfNnPp]a|[Mm][eiü]|[Rr][ou]|[FfGg]u))ss(?![aeiouäöüy])/g, "$1ß");
     r = r.replace( /((?:^|\W)(?!Frä|G[rl]a|I[br]i)[A-Za-zäöüÄÖÜ](?!nis)(?:[fnlprt][aeiouäöüy]))ss(?![aeiouäöüy])/g, "$1ß");
-    r = r.replace( /((?:^|\W)(?:[ABD-ZÄÖÜabd-zäöüß]|ch|ck)+)ss(t(?:e[rnms]?)?)?\b(?!\S*\w)/g, "$1ß$2");
+    r = r.replace( /((?:^|\W)(?:[ABD-ZÄÖÜabd-zäöüß]|ch|ck)+)ss(t(?:e[rnms]?)?)?\b(?=[-­]|(?!\S*\w))/g, "$1ß$2");
     r = r.replace( /([a-zäöü])ss(?=[bdfghjlmnqrvwx]\w*[aeiouyäöü]\w|c(?:[^h]|h(?:en\b|arakt|emi[eks]|irurg)))/g, "$1ß");
     r = r.replace( /([a-zäöü])ss(?=k(?!al[ae]|anda|izz|lav|ont[oi]|ript))/g, "$1ß");
     r = r.replace( /([a-zäöü])ss(?=z(?!ene))/g, "$1ß");
@@ -172,7 +172,7 @@ var umlautTiefe;
 
 function findeUmlaut( elem) {
     var data;
-    if (elem == null)
+    if (!elem)
         return false;
     data = elem.data;
     if ("undefined" != typeof data) {
@@ -184,6 +184,11 @@ function findeUmlaut( elem) {
         if ("undefined" != typeof children) {
             var i;
             for (i = 0; i < children.length && umlautTiefe > 0; ++i) {
+                switch (elem.localName) {
+                    case "script":
+                    case "style":
+                        continue;
+                }
                 if (findeUmlaut( children[ i]))
                     return true;
             }
@@ -205,7 +210,7 @@ function deutscheSeite() {
     if (!lang || lang == "") {
         if (document.location.hostname.match( /\.(?:de|at|ch|li)$/))
             return true;
-        umlautTiefe = 300;
+        umlautTiefe = 5000;
         if (findeUmlaut( document.body))
             return true;
     } else {
