@@ -10,7 +10,7 @@ function woerterDavorDanach( anz, such, nicht) {
 
     for (i=0; i<anz; i++) {
         if (v) {
-            if (m = v.match( /([a-zäöüß]+)\s+$/)) {
+            if (m = v.match( /([a-z\u00c0-\u017f]+)\s+$/)) {
                 v = RegExp[ "$`"];
                 if (m[ 1].match( nicht))
                     return false;
@@ -23,7 +23,7 @@ function woerterDavorDanach( anz, such, nicht) {
                     break;
         }
         if (n) {
-            if (m = n.match( /^\s+([a-zäöüß]+)/)) {
+            if (m = n.match( /^\s+([a-z\u00c0-\u017f]+)/)) {
                 n = RegExp[ "$'"]
                 if (m[ 1].match( nicht))
                     return false;
@@ -120,13 +120,13 @@ function saeubereString( s) {
     r = r.replace( /([Bb]iogra)f/g, "$1ph");
 
     r = r.replace( /\bLeid\b/g, function( match) {
-        return woerterDavorDanach( 3, /^(?:tu[tn]|getan)$/, null) ? "leid" : match;
+        return woerterDavorDanach( 8, /^(?:tu[tn]|getan)$/, null) ? "leid" : match;
     });
     r = r.replace( /\bRecht\b/g, function( match) {
-        return woerterDavorDanach( 3, /^(?:ha(?:be|st|t|ben)|beh[aä]lt(?:e|st|t|en|et))$/, /^(k?ein|das)$/) ? "recht" : match;
+        return woerterDavorDanach( 8, /^(?:ha(?:be|st|t|ben)|beh[aä]lt(?:e|st|t|en|et))$/, /^(k?ein|das)$/) ? "recht" : match;
     });
     r = r.replace( /\bBescheid\b/g, function( match) {
-        return woerterDavorDanach( 4, /^(?:we?iß|wissen|wußte|gewußt)/, null) ? "bescheid" : match;
+        return woerterDavorDanach( 6, /^(?:we?iß|wissen|wußte|gewußt)/, null) ? "bescheid" : match;
     });
 
     r = r.replace( /([Kk]ennen)\s+(?=(?:ge)?lern)/g, "$1­");
@@ -145,7 +145,7 @@ function saeubereString( s) {
     }
 
     if (gender) {
-        r = r.replace( /([a-zäöüß]+)In(?:n(en))?/g, "$1$2");
+        r = r.replace( /([a-z\u00c0-\u017f]+)In(?:n(en))?/g, "$1$2");
     }
 
     return r;
