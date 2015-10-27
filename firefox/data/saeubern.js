@@ -120,14 +120,20 @@ function saeubereString( s) {
     r = r.replace( /([Bb]iogra)f/g, "$1ph");
 
     r = r.replace( /\bLeid\b/g, function( match) {
-        return woerterDavorDanach( 8, /^(?:tu[tn]|getan)$/, null) ? "leid" : match;
+        return woerterDavorDanach( 8, /^(?:tu[tn]|getan)$/i, null) ? "leid" : match;
     });
     r = r.replace( /\bRecht\b/g, function( match) {
-        return woerterDavorDanach( 8, /^(?:ha(?:be|st|t|ben)|beh[aä]lt(?:e|st|t|en|et))$/, /^(k?ein|das)$/) ? "recht" : match;
+        return woerterDavorDanach( 8, /^(?:ha(?:be|st|t|ben)|beh[aä]lt(?:e|st|t|en|et))$/i, /^(k?ein|das)$/) ? "recht" : match;
     });
     r = r.replace( /\bBescheid\b/g, function( match) {
-        return woerterDavorDanach( 6, /^(?:we?iß|wissen|wußte|gewußt)/, null) ? "bescheid" : match;
+        return woerterDavorDanach( 6, /^(?:we?iß|wissen|wußte|gewußt|(?:ge)?g[aei]b|(?:ge)?sag)/i, null) ? "bescheid" : match;
     });
+    r = r.replace( /\bKürzeren\b/g, function( match) {
+        return woerterDavorDanach( 6, /^(?:zieh|(?:ge)?zog)/i, null) ? "kürzeren" : match;
+    });
+    r = r.replace( /(im\s+)G(roßen\s+und\s+)G(?=anzen)/g, "$1g$2g");
+    r = r.replace( /(vor\s+)K(?=urzem)/g, "$1k");
+    r = r.replace( /(seit\s+)L(?=angem)/g, "$1l");
 
     r = r.replace( /([Kk]ennen)\s+(?=(?:ge)?lern)/g, "$1­");
     r = r.replace( /([Ll]eer)\s+(?=steh|gestand)/g, "$1­");
