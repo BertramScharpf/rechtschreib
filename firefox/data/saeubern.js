@@ -111,6 +111,7 @@ function saeubereString( s) {
     r = r.replace( /((?:[Ss]ch|[Ff])l?[uo])ss(?!e[lmnrst]?|i[gl]|ung)/g, "$1ß");
     r = r.replace( /([Ss]pro)ss/g, "$1ß");
     r = r.replace( /([Gg]u)ss/g, "$1ß");
+    r = r.replace( /([Nn]u)ss(?=pal­?m)/g, "$1ß");
     r = r.replace( /([Gg]e)wiss\b/g, "$1ß");
     r = r.replace( /(pa)ss(?=w[oö]rt|phrase)/g, "$1ß");
     r = r.replace( /([Aa]dre)ss(?!e|at|ier)/g, "$1ß");
