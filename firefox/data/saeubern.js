@@ -112,6 +112,7 @@ function saeubereString( s) {
     r = r.replace( /((?:[Ss]ch|[Ff])l?[uo])ss(?!e[lmnrst]?|i[gl]|ung)/g, "$1ß");
     r = r.replace( /([Ss]pro)ss/g, "$1ß");
     r = r.replace( /([Gg]u)ss/g, "$1ß");
+    r = r.replace( /([Nn]u)ss(?=pal­?m)/g, "$1ß");
     r = r.replace( /([Gg]e)wiss\b/g, "$1ß");
     r = r.replace( /(pa)ss(?=w[oö]rt|phrase)/g, "$1ß");
     r = r.replace( /([Aa]dre)ss(?!e|at|ier)/g, "$1ß");
@@ -119,6 +120,9 @@ function saeubereString( s) {
     r = r.replace( /ss(?=en(?:dlich|erg[ie]))/g, "ß");
     r = r.replace( /([Gg]u)ss(?=eiser?n)/g, "$1ß");
     r = r.replace( /([Bb]iogra)f/g, "$1ph");
+
+    r = r.replace( /s­?(?=t(?!a[lgt]|ip|o[dnr]|um|yp|ür)(?:[aeiouäöüy](?:c[hk]|st|[ghklmnrst])?\b))/g, "­s‍");
+    r = r.replace( /([BCDFGHJKLMNPRTVWXZbcdfghjklmnprtvwxz][aeiouäöüy])s­?tr(?![äa](?:[iku]|ch|nk)|e[tnu]|ibu|unk)/g, "$1­s‍tr");
 
     r = r.replace( /\bLeid\b/g, function( match) {
         return woerterDavorDanach( 8, /^(?:tu[tn]|getan)$/i, null) ? "leid" : match;
