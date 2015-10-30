@@ -4,6 +4,7 @@
 
 var gender = true;
 var schweiz = true;
+
 function woerterDavorDanach( anz, such, nicht) {
     var v = RegExp[ "$`"], n = RegExp[ "$'"];
     var m, i;
@@ -119,6 +120,9 @@ function saeubereString( s) {
     r = r.replace( /ss(?=en(?:dlich|erg[ie]))/g, "ß");
     r = r.replace( /([Gg]u)ss(?=eiser?n)/g, "$1ß");
     r = r.replace( /([Bb]iogra)f/g, "$1ph");
+
+    r = r.replace( /s­?(?=t(?!a[lgt]|ip|o[dnr]|um|yp|ür)(?:[aeiouäöüy](?:c[hk]|st|[ghklmnrst])?\b))/g, "­s‍");
+    r = r.replace( /([BCDFGHJKLMNPRTVWXZbcdfghjklmnprtvwxz][aeiouäöüy])s­?tr(?![äa](?:[iku]|ch|nk)|e[tnu]|ibu|unk)/g, "$1­s‍tr");
 
     r = r.replace( /\bLeid\b/g, function( match) {
         return woerterDavorDanach( 8, /^(?:tu[tn]|getan)$/i, null) ? "leid" : match;
