@@ -149,7 +149,7 @@ function saeubereString( s) {
     r = r.replace( /([Ss]elbst)\s+(?=ernannt)/g, "$1­");
     r = r.replace( /([Hh]erbei)\s+(?=(?:ge)?(?:wünsch|sehn))/g, "$1­");
     r = r.replace( /([Ff]risch)\s+(?=(?:ge)?(?:halt))/g, "$1­");
-    r = r.replace( /([Gg]ut)\s+(?=(?:geh|gegangen))/g, "$1­");
+    r = r.replace( /([Gg]ut)\s+(?=(?:geh|gegangen|aussehend))/g, "$1­");
 
     if (schweiz) {
         r = r.replace( /((?:^|\W)(?:ver)?(?:[aAäÄ]u|[Gg]r[oö]))ss(?=e(?:\b|r|n(?!d)))/g, "$1ß");
