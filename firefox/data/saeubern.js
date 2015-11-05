@@ -103,7 +103,7 @@ function saeubereString( s) {
     r = r.replace( /((?:^|\W)(?:[BbFfNnPp]a|[Mm][eiü]|[Rr][ou]|[FfGg]u))ss(?![aeiouäöüy])/g, "$1ß");
     r = r.replace( /((?:^|\W)(?!Frä|G[rl]a|I[br]i)[A-Za-zäöüÄÖÜ](?!nis)(?:[fnlprt][aeiouäöüy]))ss(?![aeiouäöüy])/g, "$1ß");
     r = r.replace( /((?:^|\W)(?![a-zäöüß]*wiss\.)(?:[ABD-ZÄÖÜabd-zäöüß]|ch|ck)+)ss(t(?:e[rnms]?)?)?\b(?=[-­.,;:!?]|$|(?!\S*\w))/g, "$1ß$2");
-    r = r.replace( /([a-zäöü])ss(?=[bdfghjlmnqrvwx]\w*[aeiouyäöü]\w|c(?:[^h]|h(?:en\b|arakt|emi[eks]|irurg)))/g, "$1ß");
+    r = r.replace( /([a-zäöü])ss(?=[bdfgjlmnqrvwx]\w*[aeiouyäöü]\w|c(?:[^h]|h(?:en\b|arakt|emi[eks]|irurg))|h(?!ow))/g, "$1ß");
     r = r.replace( /([a-zäöü])ss(?=k(?!al[ae]|anda|izz|lav|ont[oi]|ript))/g, "$1ß");
     r = r.replace( /([a-zäöü])ss(?=z(?!ene))/g, "$1ß");
     r = r.replace( /ssp(?=f|re(?!ch|ng|i)|l[^i])/g, "ßp");
