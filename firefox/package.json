@@ -1,7 +1,7 @@
 {
   "title": "Rechtschreib",
   "name": "rechtschreib-bs",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Turn German content into traditional orthography",
   "icon": "resource://rechtschreib-bs/data/gruen-32.png",
   "homepage": "https://github.com/BertramScharpf/rechtschreib",

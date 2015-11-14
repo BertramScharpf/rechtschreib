@@ -103,9 +103,9 @@ function saeubereString( s) {
     r = r.replace( /((?:^|\W)(?:[BbFfNnPp]a|[Mm][eiü]|[Rr][ou]|[FfGg]u))ss(?![aeiouäöüy])/g, "$1ß");
     r = r.replace( /((?:^|\W)(?!Frä|G[rl]a|I[br]i)[A-Za-zäöüÄÖÜ](?!nis)(?:[fnlprt][aeiouäöüy]))ss(?![aeiouäöüy])/g, "$1ß");
     r = r.replace( /((?:^|\W)(?![a-zäöüß]*wiss\.)(?:[ABD-ZÄÖÜabd-zäöüß]|ch|ck)+)ss(t(?:e[rnms]?)?)?\b(?=[-­.,;:!?]|$|(?!\S*\w))/g, "$1ß$2");
-    r = r.replace( /([a-zäöü])ss(?=[bdfghjlmnqrvwx]\w*[aeiouyäöü]\w|c(?:[^h]|h(?:en\b|arakt|emi[eks]|irurg)))/g, "$1ß");
+    r = r.replace( /([a-zäöü])ss(?=[bdfgjlmnqrvwx]\w*[aeiouyäöü]\w|c(?:[^h]|h(?:en\b|arakt|emi[eks]|irurg))|h(?!ow))/g, "$1ß");
     r = r.replace( /([a-zäöü])ss(?=k(?!al[ae]|anda|izz|lav|ont[oi]|ript))/g, "$1ß");
-    r = r.replace( /([a-zäöü])ss(?=z(?!ene))/g, "$1ß");
+    r = r.replace( /([a-zäöü])ss(?=z(?!en[ae]))/g, "$1ß");
     r = r.replace( /ssp(?=f|re(?!ch|ng|i)|l[^i])/g, "ßp");
 
     r = r.replace( /([Mm]i)ss(?=ach|trau|ern|erfolg|t[oö]n)/g, "$1ß");
@@ -120,6 +120,10 @@ function saeubereString( s) {
     r = r.replace( /ss(?=en(?:dlich|erg[ie]))/g, "ß");
     r = r.replace( /([Gg]u)ss(?=eiser?n)/g, "$1ß");
     r = r.replace( /([Bb]iogra)f/g, "$1ph");
+
+    if (schweiz) {
+        r = r.replace( /((?:^|\W)(?:ver)?(?:[aAäÄ]u|[Gg]r[oö]))ss(?=e(?:\b|r|n(?!d)))/g, "$1ß");
+    }
 
     r = r.replace( /s­?(?=t(?!a[lgt]|ip|o[dnr]|um|yp|ür)(?:[aeiouäöüy](?:c[hk]|st|[ghklmnrst])?\b))/g, "­s‍");
     r = r.replace( /([BCDFGHJKLMNPRTVWXZbcdfghjklmnprtvwxz][aeiouäöüy])s­?tr(?![äa](?:[iku]|ch|nk)|e[tnu]|ibu|unk)/g, "$1­s‍tr");
@@ -137,6 +141,7 @@ function saeubereString( s) {
         return woerterDavorDanach( 6, /^(?:zieh|(?:ge)?zog)/i, null) ? "kürzeren" : match;
     });
     r = r.replace( /(im\s+)G(roßen\s+und\s+)G(?=anzen)/g, "$1g$2g");
+    r = r.replace( /(im\s+)V(?=oraus)/g, "$1v");
     r = r.replace( /(vor\s+)K(?=urzem)/g, "$1k");
     r = r.replace( /(seit\s+)L(?=angem)/g, "$1l");
 
@@ -148,12 +153,19 @@ function saeubereString( s) {
     r = r.replace( /([Ll]ieb)\s+(?=gew[io]nn)/g, "$1­");
     r = r.replace( /([Ss]elbst)\s+(?=ernannt)/g, "$1­");
     r = r.replace( /([Hh]erbei)\s+(?=(?:ge)?(?:wünsch|sehn))/g, "$1­");
-    r = r.replace( /([Ff]risch)\s+(?=(?:ge)?(?:halt))/g, "$1­");
-    r = r.replace( /([Gg]ut)\s+(?=(?:geh|gegangen|aussehend))/g, "$1­");
-
-    if (schweiz) {
-        r = r.replace( /((?:^|\W)(?:ver)?(?:[aAäÄ]u|[Gg]r[oö]))ss(?=e(?:\b|r|n(?!d)))/g, "$1ß");
-    }
+    r = r.replace( /([Ff]risch)\s+(?=(?:ge)?halt)/g, "$1­");
+    r = r.replace( /([Gg]ut)\s+(?=geh|gegangen|aussehend)/g, "$1­");
+    r = r.replace( /([Vv]iel)\s+(?=be(?:fahren|achtet))/g, "$1­");
+    r = r.replace( /(Aufsehen)\s+(?=erreg)/g, function( match) {
+        var auf = RegExp[ "$1"], ers = match;
+        var pre = (RegExp[ "$`"].match( /\S+(?=\s*$)/)||[""])[ 0];
+        if (!pre.match( /viel|großes|kaum|kein/i)) {
+            if (!pre.match( /[.!?:]$/))
+                auf = auf.toLowerCase();
+            ers = auf + "­";
+        }
+        return ers;
+    });
 
     if (gender) {
         r = r.replace( /([a-z\u00c0-\u017f]+)In(?:n(en))?/g, "$1$2");

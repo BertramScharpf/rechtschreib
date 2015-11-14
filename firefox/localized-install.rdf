@@ -7,7 +7,7 @@
       <em:type>2</em:type>
       <em:bootstrap>true</em:bootstrap>
       <em:unpack>false</em:unpack>
-      <em:version>0.1.2</em:version>
+      <em:version>0.2.0</em:version>
       <em:name>Rechtschreib</em:name>
       <em:description>Turn German content into traditional orthography</em:description>
       <em:creator>Bertram Scharpf &lt;software@bertram-scharpf.de&gt;</em:creator>
