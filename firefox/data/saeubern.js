@@ -141,6 +141,7 @@ function saeubereString( s) {
         return woerterDavorDanach( 6, /^(?:zieh|(?:ge)?zog)/i, null) ? "kürzeren" : match;
     });
     r = r.replace( /(im\s+)G(roßen\s+und\s+)G(?=anzen)/g, "$1g$2g");
+    r = r.replace( /(im\s+)V(?=oraus)/g, "$1v");
     r = r.replace( /(vor\s+)K(?=urzem)/g, "$1k");
     r = r.replace( /(seit\s+)L(?=angem)/g, "$1l");
 
