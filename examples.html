@@ -162,6 +162,7 @@ function saeubereString( s) {
     r = r.replace( /([Gg]ut)\s+(?=geh|gegangen|aussehend)/g, "$1­");
     r = r.replace( /([Vv]iel)\s+(?=be(?:fahren|achtet))/g, "$1­");
     r = r.replace( /([Ww]eiter)\s+(?=entwick)/g, "$1­");
+    r = r.replace( /([Gg]efangen)\s+(?=n[aeä]hm|nimm|genommen|(?:ge)?h[aä]lt)/g, "$1­");
     r = r.replace( /(Aufsehen)\s+(?=erreg)/g, function( match) {
         var auf = RegExp[ "$1"], ers = match;
         var pre = (RegExp[ "$`"].match( /\S+(?=\s*$)/)||[""])[ 0];
@@ -241,6 +242,7 @@ Verschwörungsszenarien
 im Voraus
 wes­trömisch
 weiter entwickelt
+gefangen nehmen gefangen gehalten
 </li>
 <li><a title="Nussschale">Nussschale</a> Bewusstsein</li>
 <li>Platzierung deplatziert</li>
