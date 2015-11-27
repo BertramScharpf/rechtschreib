@@ -126,7 +126,7 @@ function saeubereString( s) {
     }
 
     r = r.replace( /s­?(?=t(?!a[lgt]|ip|o[dnr]|um|yp|ür)(?:[aeiouäöüy](?:c[hk]|st|[ghklmnrst])?\b))/g, "­s‍");
-    r = r.replace( /([BCDFGHJKLMNPRTVWXZbcdfghjklmnprtvwxz][aeiouäöüy])s­?tr(?![äa](?:[iku]|ch|nk)|e[tnu]|ibu|unk)/g, "$1­s‍tr");
+    r = r.replace( /(\B[bcdfghjklmnprtvwxz][aeiouäöüy])s­?tr(?![äa](?:[iku]|ch|nk)|e[tnu]|ibu|unk|[aoä]u|)/g, "$1­s‍tr");
 
     r = r.replace( /\bLeid\b/g, function( match) {
         return woerterDavorDanach( 8, /^(?:tu[tn]|getan)$/i, null) ? "leid" : match;
@@ -156,6 +156,8 @@ function saeubereString( s) {
     r = r.replace( /([Ff]risch)\s+(?=(?:ge)?halt)/g, "$1­");
     r = r.replace( /([Gg]ut)\s+(?=geh|gegangen|aussehend)/g, "$1­");
     r = r.replace( /([Vv]iel)\s+(?=be(?:fahren|achtet))/g, "$1­");
+    r = r.replace( /([Ww]eiter)\s+(?=entwick)/g, "$1­");
+    r = r.replace( /([Gg]efangen)\s+(?=n[aeä]hm|nimm|genommen|(?:ge)?h[aä]lt)/g, "$1­");
     r = r.replace( /(Aufsehen)\s+(?=erreg)/g, function( match) {
         var auf = RegExp[ "$1"], ers = match;
         var pre = (RegExp[ "$`"].match( /\S+(?=\s*$)/)||[""])[ 0];
