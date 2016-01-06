@@ -2,7 +2,6 @@
 //  saeubern.js  --  Elemente von reformierter Rechtschreibung säubern
 //
 
-var gender = true;
 var schweiz = true;
 
 function woerterDavorDanach( anz, such, nicht) {
@@ -43,15 +42,6 @@ function woerterDavorDanach( anz, such, nicht) {
 function saeubereString( s) {
     var r = s;
 
-    r = r.replace( /([Ii]m +)F(?=olgenden)/g, "$1f");
-    r = r.replace( /([Ii]m +)A(?=llgemeinen)/g, "$1a");
-    r = r.replace( /([Ii]m +)Ü(?=brigen)/g, "$1ü");
-    r = r.replace( /(\b(?:[Dd]es|[Aa]uf) +)W(?=eitere)/g, "$1w");
-    r = r.replace( /([Ii]m +)W(?=esentlichen)/g, "$1w");
-    r = r.replace( /([Dd]es +)Ö(?=fteren)/g, "$1ö");
-    r = r.replace( /([Zz]u +)H(?=öherem)/g, "$1h");
-    r = r.replace( /([Ss]eit +)L(?=angem|ängerem)/g, "$1l");
-
     r = r.replace( /([Pp]la)tz(?=ier)/g, "$1z");
     r = r.replace( /([Nn]u)mm(?=erier)/g, "$1m");
     r = r.replace( /([Ss])inf(?=oni)/g, "$1ymph");
@@ -77,7 +67,7 @@ function saeubereString( s) {
     r = r.replace( /([Ss]chn)ä(?=uz)/g, "$1e");
 
     r = r.replace( /([Pp]ant)(?=er)/g, "$1h");
-    r = r.replace( /([Kk]änguru)\b/g, "$1h");
+    r = r.replace( /([Kk]änguru)/g, "$1h");
     r = r.replace( /([Dd]el)f(?=in(?![gk]e[rnlms]\b))/g, "$1ph");
 
     r = r.replace( /([Tt]i|[Mm]o|[Ss]t[eo])pp(?=s?\b)/g, "$1p");
@@ -89,11 +79,11 @@ function saeubereString( s) {
     r = r.replace( /([Zz]ier)r(?=at)/g, "$1");
     r = r.replace( /([Pp]ort)monee/g, "$1emonnaie");
 
-    r = r.replace( /([Pp]aragra)f/g, "$1ph");
+    r = r.replace( /((?:[Pp]ara|[Bb]io)gra)f/g, "$1ph");
 
     r = r.replace( /([Dd]ifferen|[Pp]oten)z(?=ial|iell)/g, "$1t");
     r = r.replace( /([Jj]usti)z(?=ia[rb]|iell)/g, "$1t");
-    r = r.replace( /(substan|exponen|existen)z(?=iell)/g, "$1t");
+    r = r.replace( /(substan|exponen|existen|referen|substan)z(?=iell)/g, "$1t");
 
     r = r.replace( /([bdfgklmnprt])\1\1(?=[aeiouyäöü])/g, "$1$1");
 
@@ -103,8 +93,8 @@ function saeubereString( s) {
     r = r.replace( /((?:^|\W)(?:[BbFfNnPp]a|[Mm][eiü]|[Rr][ou]|[FfGg]u))ss(?![aeiouäöüy])/g, "$1ß");
     r = r.replace( /((?:^|\W)(?!Frä|G[rl]a|I[br]i)[A-Za-zäöüÄÖÜ](?!nis)(?:[fnlprt][aeiouäöüy]))ss(?![aeiouäöüy])/g, "$1ß");
     r = r.replace( /((?:^|\W)(?![a-zäöüß]*wiss\.)(?:[ABD-ZÄÖÜabd-zäöüß]|ch|ck)+)ss(t(?:e[rnms]?)?)?\b(?=[-­.,;:!?]|$|(?!\S*\w))/g, "$1ß$2");
-    r = r.replace( /([a-zäöü])ss(?=[bdfgjlmnqrvwx]\w*[aeiouyäöü]\w|c(?:[^h]|h(?:en\b|arakt|emi[eks]|irurg))|h(?!ow))/g, "$1ß");
-    r = r.replace( /([a-zäöü])ss(?=k(?!al[ae]|anda|izz|lav|ont[oi]|ript))/g, "$1ß");
+    r = r.replace( /([a-zäöü])ss(?!logan|kulpt)(?=[bdfgjlmnqrvwx]\w*[aeiouyäöü]\w|c(?:[^h]|h(?:en\b|arakt|emi[eks]|irurg))|h(?!ow|\b))/g, "$1ß");
+    r = r.replace( /([a-zäöü])ss(?=k(?!al[ae]|anda|izz|lav|ont[oi]|ript|ulpt))/g, "$1ß");
     r = r.replace( /([a-zäöü])ss(?=z(?!en[ae]))/g, "$1ß");
     r = r.replace( /ssp(?=f|re(?!ch|ng|i)|l[^i])/g, "ßp");
 
@@ -116,16 +106,16 @@ function saeubereString( s) {
     r = r.replace( /([Gg]e)wiss\b/g, "$1ß");
     r = r.replace( /(pa)ss(?=w[oö]rt|phrase)/g, "$1ß");
     r = r.replace( /([Aa]dre)ss(?!e|at|ier)/g, "$1ß");
-    r = r.replace( /([Pp]roze|[Kk]ongre)ss(?!e|or|ion|ier)/g, "$1ß");
+    r = r.replace( /([Pp]roze|[Kk]ongre)ss(?!e|or|ion|ier|u[ae])/g, "$1ß");
     r = r.replace( /ss(?=en(?:dlich|erg[ie]))/g, "ß");
     r = r.replace( /([Gg]u)ss(?=eiser?n)/g, "$1ß");
-    r = r.replace( /([Bb]iogra)f/g, "$1ph");
+    r = r.replace( /([Hh]a)ss(?=erfüllt)/g, "$1ß");
 
     if (schweiz) {
         r = r.replace( /((?:^|\W)(?:ver)?(?:[aAäÄ]u|[Gg]r[oö]))ss(?=e(?:\b|r|n(?!d)))/g, "$1ß");
     }
 
-    r = r.replace( /s­?(?=t(?!a[lgt]|ip|o[dnr]|um|yp|ür)(?:[aeiouäöüy](?:c[hk]|st|[ghklmnrst])?\b))/g, "­s‍");
+    r = r.replace( /([A-ZÄÖÜa-zäöüß][a-zäöüß])s­?(?=t(?!a[lgt]|ip|o[dnr]|um|yp|ür|über)(?:[aeiouäöüy](?:c[hk]|st|[ghklmnrst])?))/g, "$1­s‍");
     r = r.replace( /(\B[bcdfghjklmnprtvwxz][aeiouäöüy])s­?tr(?![äa](?:[iku]|ch|nk)|e[tnu]|ibu|unk|[aoä]u|)/g, "$1­s‍tr");
 
     r = r.replace( /\bLeid\b/g, function( match) {
@@ -144,20 +134,30 @@ function saeubereString( s) {
     r = r.replace( /(im\s+)V(?=oraus)/g, "$1v");
     r = r.replace( /(vor\s+)K(?=urzem)/g, "$1k");
     r = r.replace( /(seit\s+)L(?=angem)/g, "$1l");
+    r = r.replace( /([Ii]m +)F(?=olgenden)/g, "$1f");
+    r = r.replace( /([Ii]m +)A(?=llgemeinen)/g, "$1a");
+    r = r.replace( /([Ii]m +)Ü(?=brigen)/g, "$1ü");
+    r = r.replace( /(\b(?:[Dd]es|[Aa]uf) +)W(?=eitere)/g, "$1w");
+    r = r.replace( /([Ii]m +)W(?=esentlichen)/g, "$1w");
+    r = r.replace( /([Dd]es +)Ö(?=fteren)/g, "$1ö");
+    r = r.replace( /([Zz]u +)H(?=öherem)/g, "$1h");
+    r = r.replace( /([Ss]eit +)L(?=angem|ängerem)/g, "$1l");
 
-    r = r.replace( /([Kk]ennen)\s+(?=(?:ge)?lern)/g, "$1­");
-    r = r.replace( /([Ll]eer)\s+(?=steh|gestand)/g, "$1­");
+    r = r.replace( /([Kk]ennen)\s+(?:(zu)\s+)?(?=(?:ge)?lern)/g, "$1$2­");
+    r = r.replace( /([Ll]eer)\s+(?:(zu)\s+)?(?=steh|gestand)/g, "$1$2­");
     r = r.replace( /([Mm]eist)\s+(?=gelesen)/g, "$1­");
-    r = r.replace( /([Ww]ieder)\s+(?=beleb)/g, "$1­");
-    r = r.replace( /([Ww]eiter)\s+(?=(?:ge)?reich)/g, "$1­");
-    r = r.replace( /([Ll]ieb)\s+(?=gew[io]nn)/g, "$1­");
+    r = r.replace( /([Ww]ieder)\s+(?:(zu)\s+)?(?=beleb)/g, "$1$2­");
+    r = r.replace( /([Ww]eiter)\s+(?:(zu)\s+)?(?=(?:ge)?reich)/g, "$1$2­");
+    r = r.replace( /([Ll]ieb)\s+(?:(zu)\s+)?(?=gew[io]nn)/g, "$1$2­");
     r = r.replace( /([Ss]elbst)\s+(?=ernannt)/g, "$1­");
-    r = r.replace( /([Hh]erbei)\s+(?=(?:ge)?(?:wünsch|sehn))/g, "$1­");
-    r = r.replace( /([Ff]risch)\s+(?=(?:ge)?halt)/g, "$1­");
-    r = r.replace( /([Gg]ut)\s+(?=geh|gegangen|aussehend)/g, "$1­");
+    r = r.replace( /([Hh]erbei)\s+(?:(zu)\s+)?(?=(?:ge)?(?:wünsch|sehn))/g, "$1$2­");
+    r = r.replace( /([Ff]risch)\s+(?:(zu)\s+)?(?=(?:ge)?halt)/g, "$1$2­");
+    r = r.replace( /([Gg]ut)\s+(?:(zu)\s+)?(?=geh|gegangen|aussehend)/g, "$1$2­");
     r = r.replace( /([Vv]iel)\s+(?=be(?:fahren|achtet))/g, "$1­");
-    r = r.replace( /([Ww]eiter)\s+(?=entwick)/g, "$1­");
-    r = r.replace( /([Gg]efangen)\s+(?=n[aeä]hm|nimm|genommen|(?:ge)?h[aä]lt)/g, "$1­");
+    r = r.replace( /([Ww]eiter)\s+(?:(zu)\s+)?(?=entwick)/g, "$1$2­");
+    r = r.replace( /([Gg]efangen)\s+(?:(zu)\s+)?(?=n[aeä]hm|nimm|genommen|(?:ge)?h[aä]lt)/g, "$1$2­");
+    r = r.replace( /([Ee]ntgegen)\s+(?:(zu)\s+)?(?=(?:ge)?wirk)/g, "$1$2­");
+    r = r.replace( /([Dd]urcheinander)\s+(?:(zu)\s+)?(?=bring|(?:ge)?brach)/g, "$1$2­");
     r = r.replace( /(Aufsehen)\s+(?=erreg)/g, function( match) {
         var auf = RegExp[ "$1"], ers = match;
         var pre = (RegExp[ "$`"].match( /\S+(?=\s*$)/)||[""])[ 0];
@@ -168,10 +168,6 @@ function saeubereString( s) {
         }
         return ers;
     });
-
-    if (gender) {
-        r = r.replace( /([a-z\u00c0-\u017f]+)In(?:n(en))?/g, "$1$2");
-    }
 
     return r;
 }
@@ -247,8 +243,13 @@ function deutscheSeite() {
         umlautTiefe = 5000;
         if (findeUmlaut( document.body))
             return true;
-    } else {
-        if (lang.match( /^de/))
+    } else if (lang.match( /^de/)) {
+        return true;
+    } else if (lang.match( /^en/)) {
+        // Auf vielen Seiten ist es falsch angegeben.
+        // Deshalb prüfen wir selber.
+        umlautTiefe = 500;
+        if (findeUmlaut( document.body))
             return true;
     }
     return false;
@@ -270,7 +271,7 @@ function findeKodierung() {
 }
 
 self.port.on( "saeubereDokument", function( options) {
-    gender = options.gender;
+    schweiz = options.schweiz;
     saeubere();
 });
 
