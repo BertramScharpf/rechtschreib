@@ -243,8 +243,13 @@ function deutscheSeite() {
         umlautTiefe = 5000;
         if (findeUmlaut( document.body))
             return true;
-    } else {
-        if (lang.match( /^de/))
+    } else if (lang.match( /^de/)) {
+        return true;
+    } else if (lang.match( /^en/)) {
+        // Auf vielen Seiten ist es falsch angegeben.
+        // Deshalb prüfen wir selber.
+        umlautTiefe = 500;
+        if (findeUmlaut( document.body))
             return true;
     }
     return false;
