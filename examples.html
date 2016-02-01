@@ -85,6 +85,7 @@ function saeubereString( s) {
     r = r.replace( /([Tt]ol)l(?=patsch)/g, "$1");
     r = r.replace( /([Zz]ier)r(?=at)/g, "$1");
     r = r.replace( /([Pp]ort)monee/g, "$1emonnaie");
+    r = r.replace( /([Ff]rit)t(?=ier)/g, "$1");
 
     r = r.replace( /((?:[Pp]ara|[Bb]io)gra)f/g, "$1ph");
 
@@ -122,7 +123,7 @@ function saeubereString( s) {
         r = r.replace( /((?:^|\W)(?:ver)?(?:[aAäÄ]u|[Gg]r[oö]))ss(?=e(?:\b|r|n(?!d)))/g, "$1ß");
     }
 
-    r = r.replace( /([A-ZÄÖÜa-zäöüß][a-zäöüß])s­?(?=t(?!a[lgt]|ip|o[dnr]|um|yp|ür|auf|über)(?:[aeiouäöüy](?:c[hk]|st|[ghklmnrst])?))/g, "$1­s‍");
+    r = r.replace( /([A-ZÄÖÜa-zäöüß][a-zäöüß])s­?(?=t(?!a[lgt]|ip|o[dnr]|um|yp|ür|aube|auf|über)(?:[aeiouäöüy](?:c[hk]|st|[ghklmnrst])?))/g, "$1­s‍");
     r = r.replace( /(\B[bcdfghjklmnprtvwxz][aeiouäöüy])s­?tr(?![äa](?:[iku]|ch|nk)|e[tnu]|ibu|unk|[aoä]u|)/g, "$1­s‍tr");
 
     r = r.replace( /\bLeid\b/g, function( match) {
@@ -143,6 +144,8 @@ function saeubereString( s) {
     r = r.replace( /([Ss]eit\s+)L(?=angem|ängerem)/g, "$1l");
     r = r.replace( /([Ii]m +)F(?=olgenden)/g, "$1f");
     r = r.replace( /([Ii]m +)A(?=llgemeinen)/g, "$1a");
+    r = r.replace( /([Ii]m +)S(?=peziellen)/g, "$1s");
+    r = r.replace( /([Bb]ei +)W(?=eitem)/g, "$1w");
     r = r.replace( /([Ii]m +)Ü(?=brigen)/g, "$1ü");
     r = r.replace( /(\b(?:[Dd]es|[Aa]uf) +)W(?=eitere)/g, "$1w");
     r = r.replace( /([Ii]m +)W(?=esentlichen)/g, "$1w");
@@ -238,6 +241,9 @@ Sprossen
 Saxofon
 Erstaufnahme
 ungewiss
+im Speziellen
+bei Weitem
+Haustaube
 </li>
 <li><a title="Nussschale">Nussschale</a> Bewusstsein</li>
 <li>Platzierung deplatziert</li>
@@ -262,6 +268,7 @@ ungewiss
 <li>belämmert Quäntchen einbläuen</li>
 <li>Tollpatsch Tollpatsche Tollpatschigkeit tollpatschigsten</li>
 <li>schnäuzen geschnäuzt Nasenschnäuzen</li>
+<li>frittieren</li>
 <li>Differenzial Differenzialdiagnose Potenzial potenziell potenzielle potenzieller</li>
 <li>Justiziar Justiziare justiziabel Justiziabilität justizielle justiziell</li>
 <li>substanziell exponenziell existenziell</li>
